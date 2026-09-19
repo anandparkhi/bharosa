@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "scam": true,
+    "text": {
+      "hi": "नमस्ते, मैं मुंबई क्राइम ब्रांच से इंस्पेक्टर बोल रहा हूँ। आपके आधार से एक पार्सल में ड्रग्स भेजे गए हैं। गिरफ़्तारी से बचने के लिए तुरंत वीडियो कॉल पर आइए और किसी को मत बताइए।",
+      "mr": "नमस्कार, मी मुंबई क्राइम ब्रँचमधून इन्स्पेक्टर बोलतोय. तुमच्या आधारवरून एका पार्सलमध्ये ड्रग्ज पाठवले गेले आहेत. अटक टाळण्यासाठी लगेच व्हिडिओ कॉलवर या आणि कोणाला सांगू नका.",
+      "en": "Hello, I am an inspector from Mumbai Crime Branch. A parcel with drugs was sent using your Aadhaar. To avoid arrest, join a video call immediately and do not tell anyone."
+    },
+    "why": {
+      "hi": "पुलिस कभी फ़ोन पर गिरफ़्तारी की धमकी नहीं देती और कभी नहीं कहती “किसी को मत बताना”। यह “डिजिटल अरेस्ट” ठगी है।",
+      "mr": "पोलीस कधीही फोनवर अटकेची धमकी देत नाहीत आणि कधीही “कोणाला सांगू नका” असे म्हणत नाहीत. ही “डिजिटल अरेस्ट” फसवणूक आहे.",
+      "en": "Police never threaten arrest over the phone and never say “tell no one”. This is a digital-arrest scam."
+    }
+  },
+  {
+    "id": 2,
+    "scam": false,
+    "text": {
+      "hi": "SBI: आपका OTP 482913 है, जो आपने अभी नेट बैंकिंग लॉगिन के लिए माँगा था। इसे किसी से साझा न करें।",
+      "mr": "SBI: तुमचा OTP 482913 आहे, जो तुम्ही आत्ता नेट बँकिंग लॉगिनसाठी मागितला होता. तो कोणाशीही शेअर करू नका.",
+      "en": "SBI: Your OTP is 482913 for the net-banking login you just requested. Do not share it with anyone."
+    },
+    "why": {
+      "hi": "अगर आपने खुद लॉगिन किया है तो यह सामान्य है। यह तभी ख़तरा बनता है जब कोई फ़ोन पर यह OTP माँगे।",
+      "mr": "तुम्ही स्वतः लॉगिन केले असेल तर हे सामान्य आहे. कोणी फोनवर हा OTP मागितला तरच धोका आहे.",
+      "en": "If you logged in yourself, this is normal. It becomes dangerous only when someone on the phone asks you for it."
+    }
+  },
+  {
+    "id": 3,
+    "scam": true,
+    "text": {
+      "hi": "प्रिय ग्राहक, आपकी बिजली आज रात 9:30 बजे काट दी जाएगी क्योंकि पिछला बिल अपडेट नहीं हुआ। तुरंत इस नंबर पर संपर्क करें 98XXXXXX21।",
+      "mr": "प्रिय ग्राहक, मागील बिल अपडेट झाले नसल्याने तुमची वीज आज रात्री 9:30 वाजता कापली जाईल. लगेच या क्रमांकावर संपर्क करा 98XXXXXX21.",
+      "en": "Dear customer, your electricity will be cut tonight at 9:30 PM as your last bill was not updated. Contact this number immediately 98XXXXXX21."
+    },
+    "why": {
+      "hi": "बिजली कंपनी निजी मोबाइल नंबर से SMS नहीं भेजती और रात में बिजली नहीं काटती। असली बिल के लिए 1912 पर फ़ोन करें।",
+      "mr": "वीज कंपनी खाजगी मोबाइल क्रमांकावरून SMS पाठवत नाही आणि रात्री वीज कापत नाही. खऱ्या बिलासाठी 1912 वर फोन करा.",
+      "en": "The electricity board does not SMS from a personal mobile number and does not cut power at night. Call 1912 to check your real bill."
+    }
+  },
+  {
+    "id": 4,
+    "scam": true,
+    "text": {
+      "hi": "आपका KYC आज समाप्त हो रहा है। खाता बंद होने से बचाने के लिए इस लिंक पर क्लिक करें: bit.ly/kyc-upd",
+      "mr": "तुमचे KYC आज संपत आहे. खाते बंद होऊ नये म्हणून या लिंकवर क्लिक करा: bit.ly/kyc-upd",
+      "en": "Your KYC expires today. Click this link to avoid account closure: bit.ly/kyc-upd"
+    },
+    "why": {
+      "hi": "बैंक कभी लिंक से KYC नहीं करवाता और एक दिन में खाता बंद नहीं करता। छोटे लिंक (bit.ly) ठगों की पहचान हैं।",
+      "mr": "बँक कधीही लिंकवरून KYC करवत नाही आणि एका दिवसात खाते बंद करत नाही. छोटे लिंक (bit.ly) फसवणुकीचे लक्षण आहेत.",
+      "en": "Banks never do KYC via a link and never close accounts in a day. Short links (bit.ly) are a scammer's trademark."
+    }
+  },
+  {
+    "id": 5,
+    "scam": false,
+    "text": {
+      "hi": "मम्मी, मैं शाम 7 बजे पहुँच रहा हूँ। खाना बनाने की ज़रूरत नहीं, मैं ले आऊँगा। – राहुल",
+      "mr": "आई, मी संध्याकाळी 7 वाजता पोहोचतोय. जेवण बनवायची गरज नाही, मी घेऊन येतो. – राहुल",
+      "en": "Mummy, I am reaching at 7 PM. No need to cook, I will bring food. – Rahul"
+    },
+    "why": {
+      "hi": "इसमें न पैसे माँगे गए, न जल्दबाज़ी, न कोई लिंक। फिर भी अगर नंबर नया हो, तो पुराने नंबर पर फ़ोन करके पक्का कर लें।",
+      "mr": "यात पैसे मागितले नाहीत, घाई नाही, लिंक नाही. तरीही क्रमांक नवीन असेल तर जुन्या क्रमांकावर फोन करून खात्री करा.",
+      "en": "No money asked, no urgency, no link. Still, if the number is new, call the old number to confirm."
+    }
+  },
+  {
+    "id": 6,
+    "scam": true,
+    "text": {
+      "hi": "पापा, मेरा फ़ोन खो गया है, यह मेरा नया नंबर है। एक दोस्त को तुरंत ₹15,000 भेजने हैं, कृपया इस UPI पर भेज दो, मैं कल लौटा दूँगा।",
+      "mr": "बाबा, माझा फोन हरवला आहे, हा माझा नवीन नंबर आहे. एका मित्राला लगेच ₹15,000 पाठवायचे आहेत, कृपया या UPI वर पाठवा, मी उद्या परत देतो.",
+      "en": "Papa, I lost my phone, this is my new number. I urgently need to send ₹15,000 to a friend, please send to this UPI, I will return it tomorrow."
+    },
+    "why": {
+      "hi": "“नया नंबर + तुरंत पैसे” सबसे आम ठगी है। पुराने नंबर पर फ़ोन करें या वीडियो कॉल पर चेहरा देखें, फिर ही पैसे भेजें।",
+      "mr": "“नवीन नंबर + लगेच पैसे” ही सर्वात सामान्य फसवणूक आहे. जुन्या क्रमांकावर फोन करा किंवा व्हिडिओ कॉलवर चेहरा पाहा, मगच पैसे पाठवा.",
+      "en": "“New number + urgent money” is the most common scam. Call the old number or see their face on video before sending anything."
+    }
+  }
+]
