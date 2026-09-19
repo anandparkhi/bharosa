@@ -1,0 +1,104 @@
+[
+  {
+    "id": "cyber",
+    "name": { "en": "Cyber crime helpline", "hi": "साइबर अपराध हेल्पलाइन", "mr": "सायबर गुन्हे हेल्पलाइन" },
+    "numbers": ["1930"],
+    "site": "https://cybercrime.gov.in",
+    "note": {
+      "en": "Report any online fraud or lost money here first.",
+      "hi": "ऑनलाइन धोखाधड़ी या पैसे खोने की शिकायत सबसे पहले यहाँ करें।",
+      "mr": "ऑनलाइन फसवणूक किंवा पैसे गेल्याची तक्रार सर्वप्रथम इथे करा."
+    }
+  },
+  {
+    "id": "police",
+    "name": { "en": "Police emergency", "hi": "पुलिस आपातकाल", "mr": "पोलीस आपत्कालीन" },
+    "numbers": ["112"],
+    "site": "",
+    "note": {
+      "en": "If you feel unsafe right now.",
+      "hi": "अगर आप अभी असुरक्षित महसूस कर रहे हैं।",
+      "mr": "तुम्हाला आत्ता असुरक्षित वाटत असेल तर."
+    }
+  },
+  {
+    "id": "chakshu",
+    "name": {
+      "en": "Report a scam call or SMS (Sanchar Saathi)",
+      "hi": "धोखे का कॉल या SMS रिपोर्ट करें (संचार साथी)",
+      "mr": "फसव्या कॉल किंवा SMS ची तक्रार करा (संचार साथी)"
+    },
+    "numbers": [],
+    "site": "https://sancharsaathi.gov.in",
+    "note": {
+      "en": "For suspicious calls where no money was lost.",
+      "hi": "ऐसे शक वाले कॉल के लिए जहाँ पैसे नहीं गए।",
+      "mr": "ज्या संशयास्पद कॉलमध्ये पैसे गेले नाहीत त्यासाठी."
+    }
+  },
+  {
+    "id": "sbi",
+    "name": { "en": "State Bank of India", "hi": "भारतीय स्टेट बैंक", "mr": "भारतीय स्टेट बँक" },
+    "numbers": ["1800 1234", "1800 2100"],
+    "site": "https://sbi.co.in",
+    "note": { "en": "", "hi": "", "mr": "" }
+  },
+  {
+    "id": "hdfc",
+    "name": { "en": "HDFC Bank", "hi": "HDFC बैंक", "mr": "HDFC बँक" },
+    "numbers": ["1800 1600", "1800 2600"],
+    "site": "https://www.hdfcbank.com",
+    "note": { "en": "", "hi": "", "mr": "" }
+  },
+  {
+    "id": "icici",
+    "name": { "en": "ICICI Bank", "hi": "ICICI बैंक", "mr": "ICICI बँक" },
+    "numbers": ["1800 1080"],
+    "site": "https://www.icicibank.com",
+    "note": { "en": "", "hi": "", "mr": "" }
+  },
+  {
+    "id": "bob",
+    "name": { "en": "Bank of Baroda", "hi": "बैंक ऑफ़ बड़ौदा", "mr": "बँक ऑफ बडोदा" },
+    "numbers": ["1800 5700"],
+    "site": "https://www.bankofbaroda.in",
+    "note": { "en": "", "hi": "", "mr": "" }
+  },
+  {
+    "id": "pnb",
+    "name": { "en": "Punjab National Bank", "hi": "पंजाब नेशनल बैंक", "mr": "पंजाब नॅशनल बँक" },
+    "numbers": ["1800 1800", "1800 2021"],
+    "site": "https://www.pnbindia.in",
+    "note": { "en": "", "hi": "", "mr": "" }
+  },
+  {
+    "id": "electricity",
+    "name": {
+      "en": "Electricity complaints (national)",
+      "hi": "बिजली शिकायत (राष्ट्रीय)",
+      "mr": "वीज तक्रार (राष्ट्रीय)"
+    },
+    "numbers": ["1912"],
+    "site": "",
+    "note": {
+      "en": "Your electricity is never cut over an SMS. Call this to check your bill.",
+      "hi": "SMS से कभी बिजली नहीं कटती। बिल जाँचने के लिए यहाँ फ़ोन करें।",
+      "mr": "SMS ने कधीही वीज कापली जात नाही. बिल तपासण्यासाठी इथे फोन करा."
+    }
+  },
+  {
+    "id": "rbi",
+    "name": {
+      "en": "RBI – report bank fraud (Sachet)",
+      "hi": "RBI – बैंक धोखाधड़ी रिपोर्ट करें (सचेत)",
+      "mr": "RBI – बँक फसवणूक तक्रार (सचेत)"
+    },
+    "numbers": [],
+    "site": "https://sachet.rbi.org.in",
+    "note": {
+      "en": "RBI never calls you or asks you to move money to a “safe account”.",
+      "hi": "RBI कभी आपको फ़ोन नहीं करता, न ही “सुरक्षित खाते” में पैसे भेजने को कहता है।",
+      "mr": "RBI कधीही तुम्हाला फोन करत नाही, किंवा “सुरक्षित खात्यात” पैसे पाठवायला सांगत नाही."
+    }
+  }
+]
