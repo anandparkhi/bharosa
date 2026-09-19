@@ -77,3 +77,16 @@ export const HOME_ACTIONS = [
 ] as const;
 
 export const API = { AI: "/api/ai" } as const;
+
+/**
+ * Client-side image compression before /api/ai. Vercel's request body cap is 4.5MB;
+ * base64 adds ~33% over raw bytes, so we budget well under that after JSON overhead.
+ * https://vercel.com/docs/functions/limitations
+ */
+export const IMAGE_LIMITS = {
+  MAX_DIMENSION: 1600,
+  INITIAL_QUALITY: 0.82,
+  MIN_QUALITY: 0.4,
+  QUALITY_STEP: 0.1,
+  MAX_DATA_URL_CHARS: 2_600_000 // ~1.95MB decoded, leaves headroom under the 4.5MB cap
+} as const;

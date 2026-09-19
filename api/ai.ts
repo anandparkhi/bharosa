@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { callClaude, parseJsonObject } from "../server/anthropic";
+import { callClaude, parseJsonObject } from "../server/anthropic.js";
 import {
   HTTP,
   DEFAULT_LANG,
@@ -8,10 +8,10 @@ import {
   MAX_TOKENS,
   VERDICTS,
   type Verdict
-} from "../server/constants";
-import { ASK_DEFAULT_QUESTION, FALLBACK_COPY, IMAGE_ONLY_NOTE, TEXT_PREFIX } from "../server/fallbackCopy";
-import { askSystemPrompt, checkSystemPrompt } from "../server/prompts";
-import { runRules, type RuleResult } from "../server/rules";
+} from "../server/constants.js";
+import { ASK_DEFAULT_QUESTION, FALLBACK_COPY, IMAGE_ONLY_NOTE, TEXT_PREFIX } from "../server/fallbackCopy.js";
+import { askSystemPrompt, checkSystemPrompt } from "../server/prompts.js";
+import { runRules, type RuleResult } from "../server/rules.js";
 
 /**
  * POST /api/ai — the only server-side entry point. The API key never reaches the browser.
@@ -76,52 +76,22 @@ async function handleCheck({
   };
 }
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
-) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (req.method !== "POST") return res.status(HTTP.METHOD_NOT_ALLOWED).json({ error: "POST only" });
+  const { mode, text = "", imageBase64, imageType, lang = DEFAULT_LANG } = (req.body ?? {}) as Body;
+  const safeText = String(text).slice(0, MAX_INPUT_CHARS);
   try {
-    if (req.method !== "POST") {
-      return res
-        .status(HTTP.METHOD_NOT_ALLOWED)
-        .json({ error: "POST only" });
-    }
-
-    const {
-      mode,
-      text = "",
-      imageBase64,
-      imageType,
-      lang = DEFAULT_LANG
-    } = (req.body ?? {}) as Body;
-
-    if (mode !== "ask" && mode !== "check") {
-      return res.status(400).json({
-        error: "invalid_mode"
-      });
-    }
-
-    const safeText = String(text).slice(0, MAX_INPUT_CHARS);
-
     const result =
       mode === "ask"
         ? await handleAsk(safeText, lang)
-        : await handleCheck({
-            text: safeText,
-            imageBase64,
-            imageType,
-            lang
-          });
-
+        : await handleCheck({ text: safeText, imageBase64, imageType, lang });
     return res.status(HTTP.OK).json(result);
   } catch (err) {
-    console.error("POST /api/ai failed", {
-      error: err instanceof Error ? err.message : String(err),
-      hasAnthropicKey: Boolean(process.env.ANTHROPIC_API_KEY)
-    });
-
-    return res.status(HTTP.SERVER_ERROR).json({
-      error: "ai_unavailable"
-    });
+    // Logged for Vercel's function logs, and echoed to the client (message text
+    // only, never a stack trace) so a bad model ID or missing key is visible in
+    // the browser Network tab instead of a silent generic failure.
+    console.error(err);
+    const detail = err instanceof Error ? err.message : String(err);
+    return res.status(HTTP.SERVER_ERROR).json({ error: "ai_unavailable", detail });
   }
 }

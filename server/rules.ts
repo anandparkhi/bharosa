@@ -1,4 +1,4 @@
-import { RULE_THRESHOLDS, type Verdict, WEIGHT, type Weight } from "./constants";
+import { RULE_THRESHOLDS, type Verdict, WEIGHT, type Weight } from "./constants.js";
 
 /**
  * Deterministic scam-signal rules. Run BEFORE the model and override it.

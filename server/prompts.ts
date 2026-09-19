@@ -1,4 +1,4 @@
-import { LANG_NAME } from "./constants";
+import { LANG_NAME } from "./constants.js";
 
 const langName = (lang: string) => LANG_NAME[lang] ?? LANG_NAME.en;
 

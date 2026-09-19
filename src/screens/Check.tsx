@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Back } from "../components/Back";
 import { Mic } from "../components/Mic";
 import { Speak } from "../components/Speak";
-import { checkMessage, fileToBase64, type CheckInput, type CheckResult } from "../lib/api";
+import { checkMessage, type CheckInput, type CheckResult } from "../lib/api";
+import { prepareImage } from "../lib/image";
 import { useSettings } from "../lib/settings";
 import { getContacts, waLink } from "../lib/storage";
 import { navigate } from "../lib/router";
@@ -42,7 +43,10 @@ export function Check() {
     setResult(null);
     try {
       const input: CheckInput = { text, lang };
-      if (shot) Object.assign(input, { imageBase64: await fileToBase64(shot.file), imageType: shot.file.type });
+      if (shot) {
+        const { base64, mediaType } = await prepareImage(shot.file);
+        Object.assign(input, { imageBase64: base64, imageType: mediaType });
+      }
       setResult(await checkMessage(input));
     } catch {
       setFailed(true);

@@ -11,17 +11,16 @@ async function post<T>(body: Record<string, unknown>): Promise<T> {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body)
   });
-  if (!response.ok) throw new Error(`api ${response.status}`);
+  if (!response.ok) {
+    // The friendly checkError copy is what the person sees; this console line is
+    // what a developer sees in devtools -> Network/Console when debugging a
+    // deploy, e.g. an Anthropic 404 for a retired model ID.
+    const detail = await response.text().catch(() => "");
+    console.error(`api ${response.status}: ${detail}`);
+    throw new Error(`api ${response.status}`);
+  }
   return response.json() as Promise<T>;
 }
 
 export const checkMessage = (input: CheckInput) => post<CheckResult>({ mode: "check", ...input });
 export const askQuestion = (input: { text: string; lang: Lang }) => post<AskResult>({ mode: "ask", ...input });
-
-export const fileToBase64 = (file: File) =>
-  new Promise<string>((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(String(reader.result).split(",")[1]);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });

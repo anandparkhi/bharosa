@@ -1,4 +1,4 @@
-import { ANTHROPIC_URL, ANTHROPIC_VERSION, MODEL } from "./constants";
+import { ANTHROPIC_URL, ANTHROPIC_VERSION, MODEL } from "./constants.js";
 
 type ContentBlock = { type: string; text?: string };
 
