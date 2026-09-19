@@ -76,18 +76,52 @@ async function handleCheck({
   };
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== "POST") return res.status(HTTP.METHOD_NOT_ALLOWED).json({ error: "POST only" });
-  const { mode, text = "", imageBase64, imageType, lang = DEFAULT_LANG } = (req.body ?? {}) as Body;
-  const safeText = String(text).slice(0, MAX_INPUT_CHARS);
+export default async function handler(
+  req: VercelRequest,
+  res: VercelResponse
+) {
   try {
+    if (req.method !== "POST") {
+      return res
+        .status(HTTP.METHOD_NOT_ALLOWED)
+        .json({ error: "POST only" });
+    }
+
+    const {
+      mode,
+      text = "",
+      imageBase64,
+      imageType,
+      lang = DEFAULT_LANG
+    } = (req.body ?? {}) as Body;
+
+    if (mode !== "ask" && mode !== "check") {
+      return res.status(400).json({
+        error: "invalid_mode"
+      });
+    }
+
+    const safeText = String(text).slice(0, MAX_INPUT_CHARS);
+
     const result =
       mode === "ask"
         ? await handleAsk(safeText, lang)
-        : await handleCheck({ text: safeText, imageBase64, imageType, lang });
+        : await handleCheck({
+            text: safeText,
+            imageBase64,
+            imageType,
+            lang
+          });
+
     return res.status(HTTP.OK).json(result);
   } catch (err) {
-    console.error(err);
-    return res.status(HTTP.SERVER_ERROR).json({ error: "ai_unavailable" });
+    console.error("POST /api/ai failed", {
+      error: err instanceof Error ? err.message : String(err),
+      hasAnthropicKey: Boolean(process.env.ANTHROPIC_API_KEY)
+    });
+
+    return res.status(HTTP.SERVER_ERROR).json({
+      error: "ai_unavailable"
+    });
   }
 }
