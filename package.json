@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "test": "esbuild server/rules.ts --format=esm --outfile=.test-build/rules.mjs --bundle --log-level=error && node --test \"tests/**/*.test.mjs\"",
+    "test": "esbuild server/rules.ts server/phoneHelp.ts server/validation.ts server/check.ts server/rateLimit.ts api/ai.ts src/lib/storage.ts src/lib/router.ts --format=esm --platform=node --outdir=.test-build --outbase=. --out-extension:.js=.mjs --bundle --log-level=error && node --test \"tests/**/*.test.mjs\"",
     "lint": "eslint . --max-warnings=0",
     "format": "prettier --write \"{src,api,server,tests}/**/*.{ts,tsx,mjs,json,css}\"",
     "check": "npm run lint && npm run build && npm test"

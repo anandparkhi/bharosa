@@ -1,25 +1,37 @@
 [
   {
     "id": "cyber",
-    "name": { "en": "Cyber crime helpline", "hi": "साइबर अपराध हेल्पलाइन", "mr": "सायबर गुन्हे हेल्पलाइन" },
+    "name": {
+      "en": "Cyber crime helpline",
+      "hi": "साइबर अपराध हेल्पलाइन",
+      "mr": "सायबर गुन्हे हेल्पलाइन"
+    },
     "numbers": ["1930"],
     "site": "https://cybercrime.gov.in",
     "note": {
       "en": "Report any online fraud or lost money here first.",
       "hi": "ऑनलाइन धोखाधड़ी या पैसे खोने की शिकायत सबसे पहले यहाँ करें।",
       "mr": "ऑनलाइन फसवणूक किंवा पैसे गेल्याची तक्रार सर्वप्रथम इथे करा."
-    }
+    },
+    "source": "https://www.hdfc.bank.in/contact-us",
+    "checkedAt": "2026-10-08"
   },
   {
     "id": "police",
-    "name": { "en": "Police emergency", "hi": "पुलिस आपातकाल", "mr": "पोलीस आपत्कालीन" },
+    "name": {
+      "en": "Police emergency",
+      "hi": "पुलिस आपातकाल",
+      "mr": "पोलीस आपत्कालीन"
+    },
     "numbers": ["112"],
-    "site": "",
+    "site": "https://112.gov.in/",
     "note": {
       "en": "If you feel unsafe right now.",
       "hi": "अगर आप अभी असुरक्षित महसूस कर रहे हैं।",
       "mr": "तुम्हाला आत्ता असुरक्षित वाटत असेल तर."
-    }
+    },
+    "source": "https://112.gov.in/faq",
+    "checkedAt": "2026-10-08"
   },
   {
     "id": "chakshu",
@@ -34,42 +46,94 @@
       "en": "For suspicious calls where no money was lost.",
       "hi": "ऐसे शक वाले कॉल के लिए जहाँ पैसे नहीं गए।",
       "mr": "ज्या संशयास्पद कॉलमध्ये पैसे गेले नाहीत त्यासाठी."
-    }
+    },
+    "source": "https://sancharsaathi.gov.in/SancharSaathiDocuments/ImportantDocuments/Threatening%20fake%20call%20for%20disconnection%20of%20mobile%20connections.pdf",
+    "checkedAt": "2026-10-08"
   },
   {
     "id": "sbi",
-    "name": { "en": "State Bank of India", "hi": "भारतीय स्टेट बैंक", "mr": "भारतीय स्टेट बँक" },
+    "name": {
+      "en": "State Bank of India",
+      "hi": "भारतीय स्टेट बैंक",
+      "mr": "भारतीय स्टेट बँक"
+    },
     "numbers": ["1800 1234", "1800 2100"],
-    "site": "https://sbi.co.in",
-    "note": { "en": "", "hi": "", "mr": "" }
+    "site": "https://sbi.bank.in/en/web/customer-care/contact-centre",
+    "note": {
+      "en": "",
+      "hi": "",
+      "mr": ""
+    },
+    "source": "https://sbi.bank.in/en/web/customer-care/contact-centre",
+    "checkedAt": "2026-10-08"
   },
   {
     "id": "hdfc",
-    "name": { "en": "HDFC Bank", "hi": "HDFC बैंक", "mr": "HDFC बँक" },
+    "name": {
+      "en": "HDFC Bank",
+      "hi": "HDFC बैंक",
+      "mr": "HDFC बँक"
+    },
     "numbers": ["1800 1600", "1800 2600"],
-    "site": "https://www.hdfcbank.com",
-    "note": { "en": "", "hi": "", "mr": "" }
+    "site": "https://www.hdfc.bank.in/contact-us",
+    "note": {
+      "en": "",
+      "hi": "",
+      "mr": ""
+    },
+    "source": "https://www.hdfc.bank.in/contact-us",
+    "checkedAt": "2026-10-08"
   },
   {
     "id": "icici",
-    "name": { "en": "ICICI Bank", "hi": "ICICI बैंक", "mr": "ICICI बँक" },
+    "name": {
+      "en": "ICICI Bank",
+      "hi": "ICICI बैंक",
+      "mr": "ICICI बँक"
+    },
     "numbers": ["1800 1080"],
-    "site": "https://www.icicibank.com",
-    "note": { "en": "", "hi": "", "mr": "" }
+    "site": "https://www.icici.bank.in/homewitholdheadfoot/customer-care",
+    "note": {
+      "en": "",
+      "hi": "",
+      "mr": ""
+    },
+    "source": "https://www.icici.bank.in/homewitholdheadfoot/customer-care",
+    "checkedAt": "2026-10-08"
   },
   {
     "id": "bob",
-    "name": { "en": "Bank of Baroda", "hi": "बैंक ऑफ़ बड़ौदा", "mr": "बँक ऑफ बडोदा" },
+    "name": {
+      "en": "Bank of Baroda",
+      "hi": "बैंक ऑफ़ बड़ौदा",
+      "mr": "बँक ऑफ बडोदा"
+    },
     "numbers": ["1800 5700"],
-    "site": "https://www.bankofbaroda.in",
-    "note": { "en": "", "hi": "", "mr": "" }
+    "site": "https://bankofbaroda.bank.in/contact-us",
+    "note": {
+      "en": "",
+      "hi": "",
+      "mr": ""
+    },
+    "source": "https://bankofbaroda.bank.in/contact-us",
+    "checkedAt": "2026-10-08"
   },
   {
     "id": "pnb",
-    "name": { "en": "Punjab National Bank", "hi": "पंजाब नेशनल बैंक", "mr": "पंजाब नॅशनल बँक" },
+    "name": {
+      "en": "Punjab National Bank",
+      "hi": "पंजाब नेशनल बैंक",
+      "mr": "पंजाब नॅशनल बँक"
+    },
     "numbers": ["1800 1800", "1800 2021"],
-    "site": "https://www.pnbindia.in",
-    "note": { "en": "", "hi": "", "mr": "" }
+    "site": "https://pnb.bank.in/contact-centre.html",
+    "note": {
+      "en": "",
+      "hi": "",
+      "mr": ""
+    },
+    "source": "https://pnb.bank.in/contact-centre.html",
+    "checkedAt": "2026-10-08"
   },
   {
     "id": "electricity",
@@ -81,24 +145,28 @@
     "numbers": ["1912"],
     "site": "",
     "note": {
-      "en": "Your electricity is never cut over an SMS. Call this to check your bill.",
-      "hi": "SMS से कभी बिजली नहीं कटती। बिल जाँचने के लिए यहाँ फ़ोन करें।",
-      "mr": "SMS ने कधीही वीज कापली जात नाही. बिल तपासण्यासाठी इथे फोन करा."
-    }
+      "en": "Verify any cutoff warning using the contact printed on your electricity bill. Availability of 1912 may vary by provider.",
+      "hi": "बिजली काटने की सूचना को अपने बिल पर दिए संपर्क से जाँचें। 1912 की उपलब्धता कंपनी के अनुसार बदल सकती है।",
+      "mr": "वीज तोडण्याची सूचना तुमच्या बिलावरील संपर्कातून तपासा. 1912 ची उपलब्धता कंपनीनुसार बदलू शकते."
+    },
+    "source": "",
+    "checkedAt": null
   },
   {
     "id": "rbi",
     "name": {
-      "en": "RBI – report bank fraud (Sachet)",
-      "hi": "RBI – बैंक धोखाधड़ी रिपोर्ट करें (सचेत)",
-      "mr": "RBI – बँक फसवणूक तक्रार (सचेत)"
+      "en": "Sachet – complaints about illegal deposit collection",
+      "hi": "सचेत – अवैध जमा संग्रह की शिकायत",
+      "mr": "सचेत – बेकायदेशीर ठेवी गोळा करण्याची तक्रार"
     },
     "numbers": [],
     "site": "https://sachet.rbi.org.in",
     "note": {
-      "en": "RBI never calls you or asks you to move money to a “safe account”.",
-      "hi": "RBI कभी आपको फ़ोन नहीं करता, न ही “सुरक्षित खाते” में पैसे भेजने को कहता है।",
-      "mr": "RBI कधीही तुम्हाला फोन करत नाही, किंवा “सुरक्षित खात्यात” पैसे पाठवायला सांगत नाही."
-    }
+      "en": "For illegal deposit-taking schemes. For an urgent cyber financial fraud, contact your bank and 1930.",
+      "hi": "अवैध जमा लेने वाली योजनाओं के लिए। तत्काल साइबर वित्तीय धोखाधड़ी के लिए बैंक और 1930 से संपर्क करें।",
+      "mr": "बेकायदेशीर ठेवी घेणाऱ्या योजनांसाठी. तातडीच्या सायबर आर्थिक फसवणुकीसाठी बँक व 1930 शी संपर्क करा."
+    },
+    "source": "https://rbi.org.in/SCRIPTs/BS_PressReleaseDisplay.aspx?prid=37689",
+    "checkedAt": "2026-10-08"
   }
 ]

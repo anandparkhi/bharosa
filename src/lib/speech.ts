@@ -56,6 +56,11 @@ export function listen(lang: string, { onText, onEnd, onError }: ListenHandlers)
   };
   rec.onerror = ({ error }: Event & { error?: string }) => onError(error ?? "error");
   rec.onend = onEnd;
-  rec.start();
+  try {
+    rec.start();
+  } catch {
+    onError("start_failed");
+    onEnd();
+  }
   return () => rec.stop();
 }

@@ -9,15 +9,26 @@ import { IMAGE_LIMITS } from "../constants";
  * comfortably under the limit while staying legible enough for the model to read.
  */
 export async function prepareImage(file: File): Promise<{ base64: string; mediaType: string }> {
+  const MAX_SOURCE_BYTES = 12_000_000;
+  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > MAX_SOURCE_BYTES)
+    throw new Error("invalid_image");
   const bitmap = await createImageBitmap(file);
   const scale = Math.min(1, IMAGE_LIMITS.MAX_DIMENSION / Math.max(bitmap.width, bitmap.height));
-  const [width, height] = [Math.round(bitmap.width * scale), Math.round(bitmap.height * scale)];
+  const [width, height] = [
+    Math.max(1, Math.round(bitmap.width * scale)),
+    Math.max(1, Math.round(bitmap.height * scale))
+  ];
 
   const canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;
   const ctx = canvas.getContext("2d");
-  if (!ctx) throw new Error("canvas unsupported");
+  if (!ctx) {
+    bitmap.close();
+    throw new Error("canvas unsupported");
+  }
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, width, height);
   ctx.drawImage(bitmap, 0, 0, width, height);
   bitmap.close();
 
@@ -27,5 +38,6 @@ export async function prepareImage(file: File): Promise<{ base64: string; mediaT
     quality -= IMAGE_LIMITS.QUALITY_STEP;
     dataUrl = canvas.toDataURL("image/jpeg", quality);
   }
+  if (dataUrl.length > IMAGE_LIMITS.MAX_DATA_URL_CHARS) throw new Error("image_too_large");
   return { base64: dataUrl.split(",")[1], mediaType: "image/jpeg" };
 }

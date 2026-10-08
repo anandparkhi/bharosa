@@ -9,6 +9,7 @@ type State = "idle" | "listening" | "unsupported";
 export function Mic({ onText }: { onText: (text: string) => void }) {
   const { t, bcp47 } = useSettings();
   const [state, setState] = useState<State>(canListen() ? "idle" : "unsupported");
+  const [failed, setFailed] = useState(false);
   const stopRef = useRef<() => void>(() => {});
   useEffect(() => () => stopRef.current(), []);
 
@@ -16,13 +17,17 @@ export function Mic({ onText }: { onText: (text: string) => void }) {
   const listening = state === "listening";
   const toggle = () => {
     if (listening) return stopRef.current();
+    setFailed(false);
     setState("listening");
     stopRef.current = listen(bcp47, {
       onText: (text, isFinal) => {
         if (isFinal) onText(text);
       },
       onEnd: () => setState("idle"),
-      onError: () => setState("idle")
+      onError: () => {
+        setState("idle");
+        setFailed(true);
+      }
     });
   };
   return (
@@ -31,6 +36,7 @@ export function Mic({ onText }: { onText: (text: string) => void }) {
         <span aria-hidden="true">{ICONS.MIC}</span> {listening ? t("listening") : t("listen")}
       </button>
       <p className="status" role="status" aria-live="polite">
+        {failed && t("micError")}
         {listening && <span className="listening">{t("listening")}</span>}
       </p>
     </div>

@@ -8,9 +8,9 @@
       "en": "Hello, I am an inspector from Mumbai Crime Branch. A parcel with drugs was sent using your Aadhaar. To avoid arrest, join a video call immediately and do not tell anyone."
     },
     "why": {
-      "hi": "पुलिस कभी फ़ोन पर गिरफ़्तारी की धमकी नहीं देती और कभी नहीं कहती “किसी को मत बताना”। यह “डिजिटल अरेस्ट” ठगी है।",
-      "mr": "पोलीस कधीही फोनवर अटकेची धमकी देत नाहीत आणि कधीही “कोणाला सांगू नका” असे म्हणत नाहीत. ही “डिजिटल अरेस्ट” फसवणूक आहे.",
-      "en": "Police never threaten arrest over the phone and never say “tell no one”. This is a digital-arrest scam."
+      "en": "Threats, urgency, and instructions to keep the call secret are strong scam signs. Disconnect and verify through an independent official contact.",
+      "hi": "धमकी, जल्दबाज़ी और कॉल को गुप्त रखने का दबाव गंभीर संकेत हैं। कॉल काटें और स्वतंत्र आधिकारिक संपर्क से जाँचें।",
+      "mr": "धमकी, घाई व कॉल गुप्त ठेवण्याचा दबाव ही गंभीर लक्षणे आहेत. कॉल बंद करा व स्वतंत्र अधिकृत संपर्कातून तपासा."
     }
   },
   {
@@ -22,9 +22,9 @@
       "en": "SBI: Your OTP is 482913 for the net-banking login you just requested. Do not share it with anyone."
     },
     "why": {
-      "hi": "अगर आपने खुद लॉगिन किया है तो यह सामान्य है। यह तभी ख़तरा बनता है जब कोई फ़ोन पर यह OTP माँगे।",
-      "mr": "तुम्ही स्वतः लॉगिन केले असेल तर हे सामान्य आहे. कोणी फोनवर हा OTP मागितला तरच धोका आहे.",
-      "en": "If you logged in yourself, this is normal. It becomes dangerous only when someone on the phone asks you for it."
+      "en": "If you initiated this login, the message may be expected. It does not prove the sender is genuine. Enter an OTP only in the official app you opened; never tell it to another person.",
+      "hi": "आपने लॉगिन शुरू किया हो तो ऐसा संदेश आ सकता है। इससे भेजने वाले की पहचान पक्की नहीं होती। OTP सिर्फ़ खुद खोले आधिकारिक ऐप में भरें; किसी व्यक्ति को न बताएँ।",
+      "mr": "तुम्ही लॉगिन सुरू केले असल्यास असा संदेश अपेक्षित असू शकतो. यावरून पाठवणाऱ्याची ओळख सिद्ध होत नाही. OTP फक्त स्वतः उघडलेल्या अधिकृत अ‍ॅपमध्ये भरा; दुसऱ्या व्यक्तीला सांगू नका."
     }
   },
   {
@@ -36,9 +36,9 @@
       "en": "Dear customer, your electricity will be cut tonight at 9:30 PM as your last bill was not updated. Contact this number immediately 98XXXXXX21."
     },
     "why": {
-      "hi": "बिजली कंपनी निजी मोबाइल नंबर से SMS नहीं भेजती और रात में बिजली नहीं काटती। असली बिल के लिए 1912 पर फ़ोन करें।",
-      "mr": "वीज कंपनी खाजगी मोबाइल क्रमांकावरून SMS पाठवत नाही आणि रात्री वीज कापत नाही. खऱ्या बिलासाठी 1912 वर फोन करा.",
-      "en": "The electricity board does not SMS from a personal mobile number and does not cut power at night. Call 1912 to check your real bill."
+      "en": "A threat to cut power urgently combined with an unfamiliar callback number is suspicious. Verify the bill in your provider’s official app or using the contact on an earlier bill.",
+      "hi": "तुरंत बिजली काटने की धमकी और अनजान नंबर पर कॉल करने का निर्देश संदिग्ध है। कंपनी के आधिकारिक ऐप या पुराने बिल के संपर्क से जाँचें।",
+      "mr": "त्वरित वीज तोडण्याची धमकी व अनोळखी क्रमांकावर कॉल करण्याची सूचना संशयास्पद आहे. कंपनीचे अधिकृत अ‍ॅप किंवा जुन्या बिलावरील संपर्कातून तपासा."
     }
   },
   {
@@ -50,9 +50,9 @@
       "en": "Your KYC expires today. Click this link to avoid account closure: bit.ly/kyc-upd"
     },
     "why": {
-      "hi": "बैंक कभी लिंक से KYC नहीं करवाता और एक दिन में खाता बंद नहीं करता। छोटे लिंक (bit.ly) ठगों की पहचान हैं।",
-      "mr": "बँक कधीही लिंकवरून KYC करवत नाही आणि एका दिवसात खाते बंद करत नाही. छोटे लिंक (bit.ly) फसवणुकीचे लक्षण आहेत.",
-      "en": "Banks never do KYC via a link and never close accounts in a day. Short links (bit.ly) are a scammer's trademark."
+      "en": "The urgent account-closure threat and shortened link need independent checking. Open your bank’s official app or website yourself; do not follow this message’s link.",
+      "hi": "खाता बंद करने की जल्दबाज़ी वाली धमकी और छोटे लिंक की स्वतंत्र जाँच ज़रूरी है। बैंक का आधिकारिक ऐप या वेबसाइट खुद खोलें; संदेश का लिंक न खोलें।",
+      "mr": "खाते बंद करण्याची घाईची धमकी व लहान लिंक स्वतंत्रपणे तपासणे आवश्यक आहे. बँकेचे अधिकृत अ‍ॅप किंवा संकेतस्थळ स्वतः उघडा; संदेशातील लिंक उघडू नका."
     }
   },
   {
@@ -78,9 +78,9 @@
       "en": "Papa, I lost my phone, this is my new number. I urgently need to send ₹15,000 to a friend, please send to this UPI, I will return it tomorrow."
     },
     "why": {
-      "hi": "“नया नंबर + तुरंत पैसे” सबसे आम ठगी है। पुराने नंबर पर फ़ोन करें या वीडियो कॉल पर चेहरा देखें, फिर ही पैसे भेजें।",
-      "mr": "“नवीन नंबर + लगेच पैसे” ही सर्वात सामान्य फसवणूक आहे. जुन्या क्रमांकावर फोन करा किंवा व्हिडिओ कॉलवर चेहरा पाहा, मगच पैसे पाठवा.",
-      "en": "“New number + urgent money” is the most common scam. Call the old number or see their face on video before sending anything."
+      "en": "A new number asking urgently for money could be an impersonator. Call the previously saved number or another trusted contact independently. A familiar voice or video face alone is not proof.",
+      "hi": "नए नंबर से तुरंत पैसे माँगने वाला कोई बहुरूपिया हो सकता है। पहले से सहेजे नंबर या दूसरे भरोसेमंद संपर्क को खुद फ़ोन करें। परिचित आवाज़ या वीडियो में चेहरा अपने आप प्रमाण नहीं है।",
+      "mr": "नवीन क्रमांकावरून त्वरित पैसे मागणारी व्यक्ती तोतया असू शकते. आधी जतन केलेल्या क्रमांकावर किंवा दुसऱ्या विश्वासू संपर्काला स्वतः फोन करा. ओळखीचा आवाज किंवा व्हिडिओतील चेहरा हा एकटाच पुरावा नाही."
     }
   }
 ]

@@ -1,26 +1,37 @@
 import type { Lang } from "../i18n/strings";
 import { API, type Verdict } from "../constants";
-
 export type CheckInput = { text: string; imageBase64?: string; imageType?: string; lang: Lang };
-export type CheckResult = { verdict: Verdict; noticed: string[]; why: string; now: string; ruleHits: string[] };
-export type AskResult = { answer: string };
-
-async function post<T>(body: Record<string, unknown>): Promise<T> {
-  const response = await fetch(API.AI, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
-  });
-  if (!response.ok) {
-    // The friendly checkError copy is what the person sees; this console line is
-    // what a developer sees in devtools -> Network/Console when debugging a
-    // deploy, e.g. an Anthropic 404 for a retired model ID.
-    const detail = await response.text().catch(() => "");
-    console.error(`api ${response.status}: ${detail}`);
-    throw new Error(`api ${response.status}`);
+export type CheckResult = {
+  verdict: Verdict;
+  noticed: string[];
+  why: string;
+  now: string;
+  ruleHits: string[];
+  analysisStatus: "complete" | "limited";
+};
+export type AskResult = { answer: string; supported: boolean; topic: string | null };
+const REQUEST_TIMEOUT_MS = 45_000;
+async function post<T>(body: Record<string, unknown>, parent?: AbortSignal): Promise<T> {
+  const controller = new AbortController();
+  const abort = () => controller.abort();
+  parent?.addEventListener("abort", abort, { once: true });
+  if (parent?.aborted) controller.abort();
+  const timeout = setTimeout(abort, REQUEST_TIMEOUT_MS);
+  try {
+    const response = await fetch(API.AI, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      signal: controller.signal
+    });
+    if (!response.ok) throw new Error(`request_${response.status}`);
+    return (await response.json()) as T;
+  } finally {
+    clearTimeout(timeout);
+    parent?.removeEventListener("abort", abort);
   }
-  return response.json() as Promise<T>;
 }
-
-export const checkMessage = (input: CheckInput) => post<CheckResult>({ mode: "check", ...input });
-export const askQuestion = (input: { text: string; lang: Lang }) => post<AskResult>({ mode: "ask", ...input });
+export const checkMessage = (input: CheckInput, signal?: AbortSignal) =>
+  post<CheckResult>({ mode: "check", ...input }, signal);
+export const askQuestion = (input: { text: string; lang: Lang }, signal?: AbortSignal) =>
+  post<AskResult>({ mode: "ask", ...input }, signal);
