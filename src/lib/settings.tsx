@@ -21,9 +21,17 @@ const Ctx = createContext<Settings | null>(null);
 const MAX_FONT_STEP = FONT_SCALE.length - 1;
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>(() => load(STORAGE_KEYS.LANG, DEFAULT_LANG));
-  const [fontStep, setFontStep] = useState(() => load(STORAGE_KEYS.FONT, DEFAULT_FONT_STEP));
-  const [highContrast, setHighContrast] = useState(() => load(STORAGE_KEYS.CONTRAST, false));
+  const [lang, setLang] = useState<Lang>(() => {
+    const saved = load<unknown>(STORAGE_KEYS.LANG, DEFAULT_LANG);
+    return LANGS.some(({ code }) => code === saved) ? (saved as Lang) : DEFAULT_LANG;
+  });
+  const [fontStep, setFontStep] = useState(() => {
+    const saved = load<unknown>(STORAGE_KEYS.FONT, DEFAULT_FONT_STEP);
+    return typeof saved === "number" && Number.isInteger(saved) && saved >= 0 && saved <= MAX_FONT_STEP
+      ? saved
+      : DEFAULT_FONT_STEP;
+  });
+  const [highContrast, setHighContrast] = useState(() => load<unknown>(STORAGE_KEYS.CONTRAST, false) === true);
 
   useEffect(() => {
     document.documentElement.style.setProperty("--fs", String(FONT_SCALE[fontStep]));

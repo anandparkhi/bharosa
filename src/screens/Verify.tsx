@@ -4,7 +4,15 @@ import directory from "../data/directory.json";
 import { ICONS } from "../constants";
 
 type Localised = Record<string, string>;
-type Entry = { id: string; name: Localised; numbers: string[]; site: string; note: Localised };
+type Entry = {
+  id: string;
+  name: Localised;
+  numbers: string[];
+  site: string;
+  note: Localised;
+  source: string;
+  checkedAt: string | null;
+};
 
 export function Verify() {
   const { t, lang } = useSettings();
@@ -14,12 +22,20 @@ export function Verify() {
       <Back />
       <h1>{t("verifyTitle")}</h1>
       <p className="lead">{t("verifyLead")}</p>
-      {(directory as Entry[]).map(({ id, name, numbers, site, note }) => (
+      {(directory as Entry[]).map(({ id, name, numbers, site, note, source, checkedAt }) => (
         <section key={id} className="card" aria-labelledby={`d-${id}`}>
           <h2 id={`d-${id}`} style={{ marginTop: 0 }}>
             {pick(name)}
           </h2>
           {pick(note) && <p>{pick(note)}</p>}
+          <p className="help">{checkedAt ? t("sourceChecked", { date: checkedAt }) : t("sourceUnverified")}</p>
+          {source && (
+            <p className="tiny">
+              <a href={source} target="_blank" rel="noreferrer">
+                {new URL(source).hostname}
+              </a>
+            </p>
+          )}
           <div className="row">
             {numbers.map((n) => (
               <a key={n} className="btn fill" href={`tel:${n.replace(/\s/g, "")}`}>

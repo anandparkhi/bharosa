@@ -7,6 +7,19 @@ export const LANGS: { code: Lang; label: string; bcp47: string }[] = [
 ];
 
 const en = {
+  storageError: "Could not save on this device. Check browser storage permissions and try again.",
+  duplicateContact: "This number is already saved.",
+  invalidPhone: "Enter a valid number. Add the country code for numbers outside India.",
+  circlePrivacy:
+    "Contacts stay in this browser. No one is notified automatically. WhatsApp opens a draft; you must send it.",
+  drillUnsureFeedback: "Pausing to check is a good choice. Here is what to look for.",
+  askError: "Phone help is unavailable right now. Try again, or ask someone you trust.",
+  checkPrivacy:
+    "Checking sends this text or image to our server and AI provider (Anthropic). Remove OTPs, passwords, and unnecessary personal details before submitting.",
+  limitedAnalysis: "Full analysis unavailable. This is limited guidance, not a completed check.",
+  micError: "We could not use the microphone. Check permission or type your question.",
+  sourceChecked: "Source checked: {date}",
+  sourceUnverified: "Contact details need rechecking on the official website.",
   appName: "Bharosa",
   tagline: "You are not alone. Let us check together.",
   fontSmaller: "Smaller text",
@@ -31,22 +44,22 @@ const en = {
   circle: "My trusted people",
   circleSub: "Set up who to call and share with",
   learn: "Practice and ask",
-  learnSub: "Two-minute practice, or ask any phone question",
+  learnSub: "Practice recognising scams and get everyday phone help",
   paid: "I already sent money",
-  paidSub: "What to do in the next hour",
+  paidSub: "Report it now, even if time has passed",
 
   // Emergency
-  emTitle: "Take a breath. You are safe right now.",
+  emTitle: "Take a breath. Let us get help.",
   emLine1: "No police, court, or bank arrests anyone over the phone.",
-  emLine2: "Anyone who says “do not tell your family” is lying to you.",
-  emLine3: "You have done nothing wrong. Asking for help is the right step.",
+  emLine2: "Pressure to keep a money request secret is a warning sign. Speak to someone you trust.",
+  emLine3: "You deserve help without blame. It is okay to pause and ask.",
   emStep1: "Cut the call. Do not call back.",
   emStep2: "Do not send money. Do not share any OTP or PIN.",
   emStep3: "Call your trusted person now.",
   emCallTrusted: "Call {name}",
   emNoTrusted: "Add a trusted person",
-  emCall1930: "Call 1930 (cyber helpline)",
-  emCall112: "Call 112 (police)",
+  emCall1930: "Call 1930 (India cyber helpline)",
+  emCall112: "Call 112 (India emergency)",
   emShareCase: "Send this to {name} on WhatsApp",
   emShareText: "I got a threatening call/message. Please call me now. (Sent from Bharosa app)",
 
@@ -60,7 +73,7 @@ const en = {
   checkNow: "Check this",
   checking: "Checking… this takes a few seconds",
   checkError:
-    "We could not check this right now. If you feel pressured, treat it as a scam and call your trusted person.",
+    "We could not complete the check. Try again later. If someone is pressuring you, pause and call a trusted person.",
   noticed: "What we noticed",
   why: "Why it matters",
   now: "What to do now",
@@ -73,9 +86,10 @@ const en = {
 
   // Verify
   verifyTitle: "Call the real office",
-  verifyLead: "Scammers give you their own number. Use only these.",
+  verifyLead:
+    "These contacts are for India. Open the official website independently to confirm current contact details.",
   verifyNote:
-    "Numbers are from official websites. If a number does not work, look it up on the bank’s own website, never from a message.",
+    "Phone numbers can change. Cross-check with the official website or your bank card or statement. Bharosa does not verify a caller’s identity.",
   callNumber: "Call {n}",
   openSite: "Open official website",
 
@@ -84,7 +98,7 @@ const en = {
   circleLead:
     "Add up to three people you trust. Bharosa will make it easy to call or message them when you feel unsure.",
   name: "Name",
-  phone: "Mobile number (with country code, e.g. 91…)",
+  phone: "Indian mobile number, or international number with country code",
   save: "Save",
   remove: "Remove",
   saved: "Saved",
@@ -93,35 +107,50 @@ const en = {
 
   // Learn
   learnTitle: "Practice and ask",
-  drillIntro: "Read this message. Is it a scam or safe?",
+  drillIntro: "What warning signs can you spot?",
   drillScam: "Scam",
-  drillSafe: "Safe",
+  drillSafe: "No obvious warning signs",
   drillUnsure: "Not sure",
   drillCorrect: "Correct.",
   drillWrong: "Not quite. Here is why.",
   drillNext: "Next one",
-  askTitle: "Ask any phone question",
-  askHelp: "For example: How do I see my bank balance on the phone? How do I block a number?",
+  askTitle: "Help using your phone",
+  askHelp:
+    "Supported topics: text size, blocking calls, screenshots, WhatsApp, updates, sound, and finding your bank balance. No coding, homework, or personal financial advice.",
   askPlaceholder: "Type or speak your question",
   ask: "Ask",
   asking: "Finding a simple answer…",
 
   // Paid
-  paidTitle: "You sent money. Act in the next hour.",
-  paidLead: "Money can sometimes be stopped if the bank is told fast. This is not your fault.",
+  paidTitle: "You sent money. Report it immediately.",
+  paidLead:
+    "Contact your bank and the cybercrime helpline promptly. Recovery is not guaranteed, but it is still worth reporting even if time has passed.",
   paidStep1: "Call your bank’s official number now and say: “I want to report a fraud transaction and freeze it.”",
   paidStep2: "Call 1930. Tell them the amount, time, and the number you sent it to.",
   paidStep3: "File a report at cybercrime.gov.in. Your trusted person can help.",
-  paidStep4: "Do not pay anyone who promises to “recover” the money. That is a second scam.",
+  paidStep4: "Keep messages and transaction records. Do not send more money to anyone promising recovery.",
   paidCallBank: "Find my bank’s number",
 
-  offline: "You are offline. Emergency steps and phone numbers still work.",
+  offline: "You are offline. Saved guidance is available; calls need phone service and WhatsApp needs internet.",
   poweredNote: "Bharosa gives guidance, not a guarantee. When unsure, call the real office yourself."
 };
 
 export type Strings = typeof en;
 
 const hi: Strings = {
+  storageError: "इस डिवाइस पर सहेज नहीं पाए। ब्राउज़र की स्टोरेज अनुमति जाँचकर फिर कोशिश करें।",
+  duplicateContact: "यह नंबर पहले से सहेजा गया है।",
+  invalidPhone: "सही नंबर डालें। भारत से बाहर के नंबर में देश कोड जोड़ें।",
+  circlePrivacy:
+    "संपर्क इसी ब्राउज़र में रहते हैं। किसी को अपने आप सूचना नहीं जाती। WhatsApp में ड्राफ़्ट खुलेगा; उसे आपको भेजना होगा।",
+  drillUnsureFeedback: "रुककर जाँचना अच्छा कदम है। इन संकेतों को देखें।",
+  askError: "फ़ोन की मदद अभी उपलब्ध नहीं है। फिर कोशिश करें या भरोसेमंद व्यक्ति से पूछें।",
+  checkPrivacy:
+    "जाँच के लिए यह संदेश या तस्वीर हमारे सर्वर और AI प्रदाता (Anthropic) को भेजी जाती है। भेजने से पहले OTP, पासवर्ड और अनावश्यक निजी जानकारी हटाएँ।",
+  limitedAnalysis: "पूरी जाँच उपलब्ध नहीं है। यह सीमित मार्गदर्शन है, पूरी जाँच नहीं।",
+  micError: "माइक्रोफ़ोन इस्तेमाल नहीं हो पाया। अनुमति जाँचें या सवाल टाइप करें।",
+  sourceChecked: "स्रोत जाँचा गया: {date}",
+  sourceUnverified: "आधिकारिक वेबसाइट पर संपर्क की जानकारी फिर जाँचें।",
   appName: "भरोसा",
   tagline: "आप अकेले नहीं हैं। चलिए साथ में जाँचते हैं।",
   fontSmaller: "अक्षर छोटे करें",
@@ -145,21 +174,21 @@ const hi: Strings = {
   circle: "मेरे भरोसेमंद लोग",
   circleSub: "तय करें किसे फ़ोन करना है और किसे बताना है",
   learn: "अभ्यास करें और पूछें",
-  learnSub: "दो मिनट का अभ्यास, या फ़ोन से जुड़ा कोई भी सवाल",
+  learnSub: "धोखे के संकेत पहचानने का अभ्यास और फ़ोन के रोज़मर्रा के कामों में मदद",
   paid: "मैंने पैसे भेज दिए हैं",
-  paidSub: "अगले एक घंटे में क्या करें",
+  paidSub: "समय बीत गया हो तब भी अभी शिकायत करें",
 
-  emTitle: "एक गहरी साँस लीजिए। आप अभी सुरक्षित हैं।",
+  emTitle: "एक गहरी साँस लीजिए। चलिए मदद लेते हैं।",
   emLine1: "कोई भी पुलिस, अदालत या बैंक फ़ोन पर किसी को गिरफ़्तार नहीं करता।",
-  emLine2: "जो कहे “परिवार को मत बताना”, वह आपसे झूठ बोल रहा है।",
-  emLine3: "आपने कुछ भी ग़लत नहीं किया है। मदद माँगना सही कदम है।",
+  emLine2: "पैसे की माँग को गुप्त रखने का दबाव चेतावनी है। किसी भरोसेमंद व्यक्ति से बात करें।",
+  emLine3: "बिना दोष दिए मदद मिलना आपका अधिकार है। रुककर पूछना ठीक है।",
   emStep1: "कॉल काट दीजिए। वापस फ़ोन मत कीजिए।",
   emStep2: "पैसे मत भेजिए। कोई OTP या PIN मत बताइए।",
   emStep3: "अभी अपने भरोसेमंद व्यक्ति को फ़ोन कीजिए।",
   emCallTrusted: "{name} को फ़ोन करें",
   emNoTrusted: "भरोसेमंद व्यक्ति जोड़ें",
-  emCall1930: "1930 पर फ़ोन करें (साइबर हेल्पलाइन)",
-  emCall112: "112 पर फ़ोन करें (पुलिस)",
+  emCall1930: "1930 पर फ़ोन करें (भारत साइबर हेल्पलाइन)",
+  emCall112: "112 पर फ़ोन करें (भारत आपातकाल)",
   emShareCase: "{name} को WhatsApp पर भेजें",
   emShareText: "मुझे एक धमकी भरा कॉल/संदेश आया है। कृपया मुझे अभी फ़ोन करें। (भरोसा ऐप से भेजा गया)",
 
@@ -172,7 +201,7 @@ const hi: Strings = {
   checkNow: "इसे जाँचें",
   checking: "जाँच हो रही है… कुछ सेकंड लगेंगे",
   checkError:
-    "अभी जाँच नहीं हो पाई। अगर आप पर दबाव डाला जा रहा है, तो इसे धोखा समझें और अपने भरोसेमंद व्यक्ति को फ़ोन करें।",
+    "जाँच पूरी नहीं हुई। थोड़ी देर बाद फिर कोशिश करें। कोई दबाव डाल रहा हो तो रुकें और भरोसेमंद व्यक्ति को फ़ोन करें।",
   noticed: "हमने क्या देखा",
   why: "यह क्यों ज़रूरी है",
   now: "अब क्या करें",
@@ -184,9 +213,9 @@ const hi: Strings = {
   shareResult: "नतीजा भरोसेमंद व्यक्ति को भेजें",
 
   verifyTitle: "असली दफ़्तर को फ़ोन करें",
-  verifyLead: "ठग अपना नंबर देते हैं। सिर्फ़ ये नंबर इस्तेमाल करें।",
+  verifyLead: "ये संपर्क भारत के लिए हैं। ताज़ा जानकारी जाँचने के लिए आधिकारिक वेबसाइट खुद खोलें।",
   verifyNote:
-    "ये नंबर आधिकारिक वेबसाइटों से हैं। अगर कोई नंबर काम न करे, तो बैंक की अपनी वेबसाइट पर देखें, किसी संदेश से नहीं।",
+    "नंबर बदल सकते हैं। आधिकारिक वेबसाइट, बैंक कार्ड या स्टेटमेंट से मिलान करें। भरोसा कॉल करने वाले की पहचान की पुष्टि नहीं करता।",
   callNumber: "{n} पर फ़ोन करें",
   openSite: "आधिकारिक वेबसाइट खोलें",
 
@@ -194,7 +223,7 @@ const hi: Strings = {
   circleLead:
     "तीन तक ऐसे लोग जोड़ें जिन पर आपको भरोसा है। जब भी शक हो, भरोसा ऐप उन्हें फ़ोन या संदेश करना आसान बना देगा।",
   name: "नाम",
-  phone: "मोबाइल नंबर (देश कोड के साथ, जैसे 91…)",
+  phone: "भारतीय मोबाइल नंबर, या देश कोड सहित अंतरराष्ट्रीय नंबर",
   save: "सहेजें",
   remove: "हटाएँ",
   saved: "सहेज लिया",
@@ -202,33 +231,48 @@ const hi: Strings = {
   yourName: "आपका नाम (ताकि उन्हें पता चले कौन संदेश भेज रहा है)",
 
   learnTitle: "अभ्यास करें और पूछें",
-  drillIntro: "यह संदेश पढ़िए। यह धोखा है या सुरक्षित?",
+  drillIntro: "कौन से चेतावनी के संकेत दिख रहे हैं?",
   drillScam: "धोखा",
-  drillSafe: "सुरक्षित",
+  drillSafe: "स्पष्ट चेतावनी नहीं दिखती",
   drillUnsure: "पक्का नहीं",
   drillCorrect: "सही।",
   drillWrong: "पूरी तरह नहीं। वजह यह है।",
   drillNext: "अगला",
-  askTitle: "फ़ोन से जुड़ा कोई भी सवाल पूछें",
-  askHelp: "जैसे: फ़ोन पर बैंक बैलेंस कैसे देखूँ? किसी नंबर को ब्लॉक कैसे करूँ?",
+  askTitle: "फ़ोन चलाने में मदद",
+  askHelp:
+    "मदद के विषय: अक्षर बड़े करना, नंबर ब्लॉक करना, स्क्रीनशॉट, WhatsApp, अपडेट, आवाज़ और बैंक बैलेंस देखना। कोडिंग, होमवर्क या निजी वित्तीय सलाह नहीं।",
   askPlaceholder: "अपना सवाल टाइप करें या बोलें",
   ask: "पूछें",
   asking: "आसान जवाब ढूँढ रहे हैं…",
 
-  paidTitle: "आपने पैसे भेज दिए। अगले एक घंटे में यह करें।",
-  paidLead: "अगर बैंक को जल्दी बताया जाए तो कभी-कभी पैसे रोके जा सकते हैं। इसमें आपकी कोई ग़लती नहीं है।",
+  paidTitle: "पैसे भेज दिए हैं। तुरंत शिकायत करें।",
+  paidLead:
+    "तुरंत अपने बैंक और साइबर हेल्पलाइन से संपर्क करें। पैसे वापस मिलने की गारंटी नहीं है, पर समय बीतने के बाद भी शिकायत करें।",
   paidStep1:
     "अभी अपने बैंक के आधिकारिक नंबर पर फ़ोन करें और कहें: “मुझे एक धोखाधड़ी लेनदेन की शिकायत करनी है और उसे रोकना है।”",
   paidStep2: "1930 पर फ़ोन करें। रकम, समय, और जिस नंबर पर भेजा वह बताएँ।",
   paidStep3: "cybercrime.gov.in पर शिकायत दर्ज करें। आपका भरोसेमंद व्यक्ति मदद कर सकता है।",
-  paidStep4: "जो कोई “पैसे वापस दिलाने” का वादा करे, उसे कुछ मत दीजिए। वह दूसरा धोखा है।",
+  paidStep4: "संदेश और लेनदेन के सबूत रखें। पैसे वापस दिलाने का वादा करने वाले को और पैसे न दें।",
   paidCallBank: "मेरे बैंक का नंबर ढूँढें",
 
-  offline: "आप ऑफ़लाइन हैं। आपातकालीन कदम और फ़ोन नंबर अब भी काम करेंगे।",
+  offline: "आप ऑफ़लाइन हैं। सहेजे गए निर्देश उपलब्ध हैं; कॉल के लिए फ़ोन सेवा और WhatsApp के लिए इंटरनेट चाहिए।",
   poweredNote: "भरोसा मार्गदर्शन देता है, गारंटी नहीं। शक हो तो असली दफ़्तर को खुद फ़ोन करें।"
 };
 
 const mr: Strings = {
+  storageError: "या उपकरणावर जतन करता आले नाही. ब्राउझरची स्टोरेज परवानगी तपासून पुन्हा प्रयत्न करा.",
+  duplicateContact: "हा क्रमांक आधीच जतन केला आहे.",
+  invalidPhone: "योग्य क्रमांक टाका. भारताबाहेरील क्रमांकासाठी देश कोड जोडा.",
+  circlePrivacy:
+    "संपर्क याच ब्राउझरमध्ये राहतात. आपोआप सूचना जात नाही. WhatsApp मध्ये मसुदा उघडतो; तुम्हालाच तो पाठवावा लागेल.",
+  drillUnsureFeedback: "थांबून तपासणे योग्य आहे. ही लक्षणे पाहा.",
+  askError: "फोनची मदत सध्या उपलब्ध नाही. पुन्हा प्रयत्न करा किंवा विश्वासू व्यक्तीला विचारा.",
+  checkPrivacy:
+    "तपासणीसाठी हा संदेश किंवा फोटो आमच्या सर्व्हर व AI प्रदात्याकडे (Anthropic) पाठवला जातो. पाठवण्याआधी OTP, पासवर्ड व अनावश्यक खाजगी माहिती काढा.",
+  limitedAnalysis: "पूर्ण तपासणी उपलब्ध नाही. हे मर्यादित मार्गदर्शन आहे, पूर्ण तपासणी नाही.",
+  micError: "मायक्रोफोन वापरता आला नाही. परवानगी तपासा किंवा प्रश्न टाइप करा.",
+  sourceChecked: "स्रोत तपासला: {date}",
+  sourceUnverified: "अधिकृत संकेतस्थळावर संपर्क माहिती पुन्हा तपासा.",
   appName: "भरोसा",
   tagline: "तुम्ही एकटे नाही. चला, एकत्र तपासूया.",
   fontSmaller: "अक्षरे लहान करा",
@@ -252,21 +296,21 @@ const mr: Strings = {
   circle: "माझी विश्वासू माणसे",
   circleSub: "कोणाला फोन करायचा आणि कोणाला सांगायचे ते ठरवा",
   learn: "सराव करा आणि विचारा",
-  learnSub: "दोन मिनिटांचा सराव, किंवा फोनबद्दल कोणताही प्रश्न",
+  learnSub: "फसवणुकीची लक्षणे ओळखण्याचा सराव व फोनच्या रोजच्या कामांत मदत",
   paid: "मी पैसे पाठवले आहेत",
-  paidSub: "पुढच्या एका तासात काय करावे",
+  paidSub: "वेळ गेला असला तरी आत्ताच तक्रार करा",
 
-  emTitle: "एक दीर्घ श्वास घ्या. तुम्ही आत्ता सुरक्षित आहात.",
+  emTitle: "एक दीर्घ श्वास घ्या. चला, मदत घेऊया.",
   emLine1: "कोणतीही पोलीस, न्यायालय किंवा बँक फोनवर कोणाला अटक करत नाही.",
-  emLine2: "जो म्हणतो “कुटुंबाला सांगू नका”, तो तुमच्याशी खोटे बोलत आहे.",
-  emLine3: "तुम्ही काहीही चूक केलेली नाही. मदत मागणे हेच योग्य पाऊल आहे.",
+  emLine2: "पैशांची मागणी गुप्त ठेवण्याचा दबाव हे धोक्याचे लक्षण आहे. विश्वासू व्यक्तीशी बोला.",
+  emLine3: "दोष न देता मदत मिळणे तुमचा हक्क आहे. थांबून विचारणे योग्य आहे.",
   emStep1: "कॉल कट करा. परत फोन करू नका.",
   emStep2: "पैसे पाठवू नका. कोणताही OTP किंवा PIN सांगू नका.",
   emStep3: "आत्ता तुमच्या विश्वासू व्यक्तीला फोन करा.",
   emCallTrusted: "{name} यांना फोन करा",
   emNoTrusted: "विश्वासू व्यक्ती जोडा",
-  emCall1930: "1930 वर फोन करा (सायबर हेल्पलाइन)",
-  emCall112: "112 वर फोन करा (पोलीस)",
+  emCall1930: "1930 वर फोन करा (भारत सायबर हेल्पलाइन)",
+  emCall112: "112 वर फोन करा (भारत आपत्काल)",
   emShareCase: "{name} यांना WhatsApp वर पाठवा",
   emShareText: "मला धमकीचा कॉल/संदेश आला आहे. कृपया मला आत्ता फोन करा. (भरोसा अ‍ॅपमधून पाठवले)",
 
@@ -279,7 +323,7 @@ const mr: Strings = {
   checkNow: "हे तपासा",
   checking: "तपासत आहोत… काही सेकंद लागतील",
   checkError:
-    "आत्ता तपासता आले नाही. तुमच्यावर दबाव येत असेल तर हा फसवणुकीचा प्रकार समजा आणि विश्वासू व्यक्तीला फोन करा.",
+    "तपासणी पूर्ण झाली नाही. थोड्या वेळाने पुन्हा प्रयत्न करा. कोणी दबाव टाकत असेल तर थांबा आणि विश्वासू व्यक्तीला फोन करा.",
   noticed: "आम्हाला काय दिसले",
   why: "हे का महत्त्वाचे आहे",
   now: "आता काय करावे",
@@ -291,16 +335,16 @@ const mr: Strings = {
   shareResult: "निकाल विश्वासू व्यक्तीला पाठवा",
 
   verifyTitle: "खऱ्या कार्यालयाला फोन करा",
-  verifyLead: "फसवणूक करणारे स्वतःचा क्रमांक देतात. फक्त हेच क्रमांक वापरा.",
+  verifyLead: "हे संपर्क भारतासाठी आहेत. ताजी माहिती तपासण्यासाठी अधिकृत संकेतस्थळ स्वतः उघडा.",
   verifyNote:
-    "हे क्रमांक अधिकृत संकेतस्थळांवरून आहेत. एखादा क्रमांक चालला नाही तर बँकेच्या स्वतःच्या संकेतस्थळावर पाहा, कोणत्याही संदेशातून नाही.",
+    "क्रमांक बदलू शकतात. अधिकृत संकेतस्थळ, बँक कार्ड किंवा स्टेटमेंटशी पडताळा. भरोसा कॉल करणाऱ्याची ओळख निश्चित करत नाही.",
   callNumber: "{n} वर फोन करा",
   openSite: "अधिकृत संकेतस्थळ उघडा",
 
   circleTitle: "माझी विश्वासू माणसे",
   circleLead: "तुमचा विश्वास असलेली तीन माणसे जोडा. शंका आली की भरोसा त्यांना फोन किंवा संदेश करणे सोपे करेल.",
   name: "नाव",
-  phone: "मोबाइल क्रमांक (देश कोडसह, उदा. 91…)",
+  phone: "भारतीय मोबाइल क्रमांक किंवा देश कोडसह आंतरराष्ट्रीय क्रमांक",
   save: "जतन करा",
   remove: "काढा",
   saved: "जतन केले",
@@ -308,29 +352,31 @@ const mr: Strings = {
   yourName: "तुमचे नाव (म्हणजे त्यांना कळेल कोण संदेश पाठवत आहे)",
 
   learnTitle: "सराव करा आणि विचारा",
-  drillIntro: "हा संदेश वाचा. ही फसवणूक आहे की सुरक्षित?",
+  drillIntro: "कोणती धोक्याची लक्षणे दिसतात?",
   drillScam: "फसवणूक",
-  drillSafe: "सुरक्षित",
+  drillSafe: "स्पष्ट धोक्याची लक्षणे नाहीत",
   drillUnsure: "खात्री नाही",
   drillCorrect: "बरोबर.",
   drillWrong: "पूर्णपणे नाही. कारण असे आहे.",
   drillNext: "पुढचा",
-  askTitle: "फोनबद्दल कोणताही प्रश्न विचारा",
-  askHelp: "उदा.: फोनवर बँक बॅलन्स कसा पाहू? एखादा क्रमांक ब्लॉक कसा करू?",
+  askTitle: "फोन वापरण्यात मदत",
+  askHelp:
+    "मदतीचे विषय: अक्षरे मोठी करणे, क्रमांक ब्लॉक करणे, स्क्रीनशॉट, WhatsApp, अपडेट, आवाज आणि बँक बॅलन्स पाहणे. कोडिंग, गृहपाठ किंवा वैयक्तिक आर्थिक सल्ला नाही.",
   askPlaceholder: "तुमचा प्रश्न टाइप करा किंवा बोला",
   ask: "विचारा",
   asking: "सोपे उत्तर शोधत आहोत…",
 
-  paidTitle: "तुम्ही पैसे पाठवले. पुढच्या एका तासात हे करा.",
-  paidLead: "बँकेला लवकर सांगितले तर कधी कधी पैसे थांबवता येतात. यात तुमची चूक नाही.",
+  paidTitle: "पैसे पाठवले आहेत. त्वरित तक्रार करा.",
+  paidLead:
+    "बँक आणि सायबर हेल्पलाइनशी त्वरित संपर्क करा. पैसे परत मिळण्याची हमी नाही, पण वेळ गेला असला तरी तक्रार करा.",
   paidStep1:
     "आत्ता बँकेच्या अधिकृत क्रमांकावर फोन करा आणि सांगा: “मला फसवणुकीचा व्यवहार नोंदवायचा आहे आणि तो थांबवायचा आहे.”",
   paidStep2: "1930 वर फोन करा. रक्कम, वेळ आणि ज्या क्रमांकावर पाठवले तो सांगा.",
   paidStep3: "cybercrime.gov.in वर तक्रार नोंदवा. तुमची विश्वासू व्यक्ती मदत करू शकते.",
-  paidStep4: "“पैसे परत मिळवून देतो” असे कोणी म्हटले तर काहीही देऊ नका. ती दुसरी फसवणूक आहे.",
+  paidStep4: "संदेश आणि व्यवहारांचे पुरावे जतन करा. पैसे परत मिळवून देण्याचे आश्वासन देणाऱ्याला आणखी पैसे देऊ नका.",
   paidCallBank: "माझ्या बँकेचा क्रमांक शोधा",
 
-  offline: "तुम्ही ऑफलाइन आहात. आपत्कालीन पायऱ्या आणि फोन क्रमांक अजूनही चालतील.",
+  offline: "तुम्ही ऑफलाइन आहात. जतन केलेल्या सूचना उपलब्ध आहेत; कॉलसाठी फोन सेवा आणि WhatsApp साठी इंटरनेट लागते.",
   poweredNote: "भरोसा मार्गदर्शन देतो, हमी नाही. शंका असल्यास खऱ्या कार्यालयाला स्वतः फोन करा."
 };
 

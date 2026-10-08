@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { runRules } from "../.test-build/rules.mjs";
+import { runRules } from "../.test-build/server/rules.mjs";
 
 const drills = JSON.parse(readFileSync(new URL("../src/data/drills.json", import.meta.url), "utf8"));
 const LANGS = ["hi", "mr", "en"];

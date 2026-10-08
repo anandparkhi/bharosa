@@ -16,4 +16,5 @@ export function usePath() {
   return path;
 }
 export const matchRoute = (path: string): Route =>
-  (Object.values(ROUTES).find((r) => r !== ROUTES.HOME && path.startsWith(r)) as Route | undefined) ?? ROUTES.HOME;
+  (Object.values(ROUTES).find((r) => r !== ROUTES.HOME && path.replace(/\/$/, "") === r) as Route | undefined) ??
+  ROUTES.HOME;

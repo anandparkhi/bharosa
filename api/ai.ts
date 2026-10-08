@@ -1,97 +1,40 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { callClaude, parseJsonObject } from "../server/anthropic.js";
-import {
-  HTTP,
-  DEFAULT_LANG,
-  MAX_INPUT_CHARS,
-  MAX_NOTICED,
-  MAX_TOKENS,
-  VERDICTS,
-  type Verdict
-} from "../server/constants.js";
-import { ASK_DEFAULT_QUESTION, FALLBACK_COPY, IMAGE_ONLY_NOTE, TEXT_PREFIX } from "../server/fallbackCopy.js";
-import { askSystemPrompt, checkSystemPrompt } from "../server/prompts.js";
-import { runRules, type RuleResult } from "../server/rules.js";
+import { checkMessage } from "../server/check.js";
+import { phoneHelp } from "../server/phoneHelp.js";
+import { allowRequest } from "../server/rateLimit.js";
+import { InputError, validateBody } from "../server/validation.js";
 
-/**
- * POST /api/ai — the only server-side entry point. The API key never reaches the browser.
- *   mode "check": rules layer → Claude → strict JSON. Rules override the model.
- *   mode "ask":   plain-language phone help.
- */
-
-type Body = { mode: "check" | "ask"; text?: string; imageBase64?: string; imageType?: string; lang?: string };
-type ModelVerdict = { verdict?: string; noticed?: unknown; why?: string; now?: string };
-
-const isVerdict = (v: string): v is Verdict => (VERDICTS as readonly string[]).includes(v);
-
-function resolveVerdict(model: string | undefined, { forced }: RuleResult): Verdict {
-  const fromModel = (model ?? "AMBER").toUpperCase();
-  if (forced === "RED") return "RED";
-  if (forced === "AMBER" && fromModel === "GREEN") return "AMBER";
-  return isVerdict(fromModel) ? fromModel : "AMBER";
-}
-
-function fallbackVerdict(lang: string, rules: RuleResult): Required<ModelVerdict> & { noticed: string[] } {
-  const { why, nowRed, nowAmber } = FALLBACK_COPY[lang] ?? FALLBACK_COPY.en;
-  const verdict = rules.forced ?? "AMBER";
-  return { verdict, noticed: rules.hits.slice(0, MAX_NOTICED), why, now: verdict === "RED" ? nowRed : nowAmber };
-}
-
-async function handleAsk(text: string, lang: string) {
-  const answer = await callClaude(
-    askSystemPrompt(lang),
-    [{ type: "text", text: text || ASK_DEFAULT_QUESTION }],
-    MAX_TOKENS.ASK
-  );
-  return { answer };
-}
-
-async function handleCheck({
-  text,
-  imageBase64,
-  imageType,
-  lang
-}: Required<Pick<Body, "text" | "lang">> & Pick<Body, "imageBase64" | "imageType">) {
-  const rules = runRules(text);
-  const content: unknown[] = [];
-  if (imageBase64 && imageType)
-    content.push({ type: "image", source: { type: "base64", media_type: imageType, data: imageBase64 } });
-  content.push({ type: "text", text: text ? `${TEXT_PREFIX}${text}` : IMAGE_ONLY_NOTE });
-
-  let out: ModelVerdict;
-  try {
-    out = parseJsonObject<ModelVerdict>(
-      await callClaude(checkSystemPrompt(lang, rules.hits), content, MAX_TOKENS.CHECK)
-    );
-  } catch {
-    out = fallbackVerdict(lang, rules);
-  }
-  const { verdict: modelVerdict, noticed, why = "", now = "" } = out;
-  return {
-    verdict: resolveVerdict(modelVerdict, rules),
-    noticed: Array.isArray(noticed) ? noticed.slice(0, MAX_NOTICED).map(String) : [],
-    why: String(why),
-    now: String(now),
-    ruleHits: rules.hits
-  };
-}
-
+const STATUS = { OK: 200, BAD_REQUEST: 400, FORBIDDEN: 403, METHOD: 405, RATE: 429, UNAVAILABLE: 503 };
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== "POST") return res.status(HTTP.METHOD_NOT_ALLOWED).json({ error: "POST only" });
-  const { mode, text = "", imageBase64, imageType, lang = DEFAULT_LANG } = (req.body ?? {}) as Body;
-  const safeText = String(text).slice(0, MAX_INPUT_CHARS);
+  res.setHeader("Cache-Control", "no-store");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    return res.status(STATUS.METHOD).json({ error: "post_required" });
+  }
+  const { origin } = req.headers;
+  if (origin) {
+    try {
+      if (new URL(origin).host !== req.headers.host)
+        return res.status(STATUS.FORBIDDEN).json({ error: "invalid_origin" });
+    } catch {
+      return res.status(STATUS.FORBIDDEN).json({ error: "invalid_origin" });
+    }
+  }
   try {
-    const result =
-      mode === "ask"
-        ? await handleAsk(safeText, lang)
-        : await handleCheck({ text: safeText, imageBase64, imageType, lang });
-    return res.status(HTTP.OK).json(result);
-  } catch (err) {
-    // Logged for Vercel's function logs, and echoed to the client (message text
-    // only, never a stack trace) so a bad model ID or missing key is visible in
-    // the browser Network tab instead of a silent generic failure.
-    console.error(err);
-    const detail = err instanceof Error ? err.message : String(err);
-    return res.status(HTTP.SERVER_ERROR).json({ error: "ai_unavailable", detail });
+    const body = validateBody(req.body);
+    // Phone guides have no model cost and cannot expose a general-purpose AI.
+    if (body.mode === "ask") return res.status(STATUS.OK).json(phoneHelp(body.text, body.lang));
+    const ip = String(req.headers["x-vercel-forwarded-for"] ?? req.socket?.remoteAddress ?? "unknown").split(",")[0];
+    if (!allowRequest(ip)) {
+      res.setHeader("Retry-After", "60");
+      return res.status(STATUS.RATE).json({ error: "too_many_requests" });
+    }
+    return res.status(STATUS.OK).json(await checkMessage(body));
+  } catch (error) {
+    if (error instanceof InputError) return res.status(STATUS.BAD_REQUEST).json({ error: error.message });
+    // No prompts, provider response bodies, images or personal data in logs/client errors.
+    console.error("Bharosa request failed");
+    return res.status(STATUS.UNAVAILABLE).json({ error: "service_unavailable" });
   }
 }

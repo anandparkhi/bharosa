@@ -2,40 +2,39 @@ import { RULE_THRESHOLDS, type Verdict, WEIGHT, type Weight } from "./constants.
 
 /**
  * Deterministic scam-signal rules. Run BEFORE the model and override it.
- * Covers Hindi, Marathi (Devanagari) and English/Hinglish. `unless` suppresses
- * false positives (e.g. a bank's own "do not share this OTP" message).
+ * Covers common Hindi, Marathi (Devanagari) and English/Hinglish patterns.
+ * These are guardrails, not an exhaustive fraud classifier.
  * Add every real-world miss here and to tests/rules.test.mjs.
  */
-type Rule = { id: string; weight: Weight; re: RegExp; unless?: RegExp };
+type Rule = { id: string; weight: Weight; re: RegExp; unless?: RegExp; context?: RegExp };
 const RULES: Rule[] = [
   // Digital arrest / impersonation of authority
   {
     id: "authority_impersonation",
     weight: WEIGHT.CRITICAL,
+    context:
+      /arrest|warrant|transfer|pay|send money|do not tell|don.t tell|गिरफ़?्तार|गिरफ्तार|अटक|पैसे|रकम|रक्कम|कोणाला सांगू नका|किसी को मत/i,
     re: /\b(cbi|ed|enforcement directorate|narcotics|ncb|customs|trai|police|crime branch|inspector|supreme court|high court|income tax|cyber ?cell|interpol|rbi)\b|सीबीआई|पुलिस|अदालत|कोर्ट|नारकोटिक्स|कस्टम|क्राइम ब्रांच|क्राइम ब्रँच|इंस्पेक्टर|इन्स्पेक्टर|पोलीस|न्यायालय/i
   },
   {
     id: "arrest_threat",
-    weight: WEIGHT.CRITICAL,
-    re: /digital arrest|arrest|warrant|money laundering|drugs? (parcel|found)|parcel .*(drug|illegal)|गिरफ़?्तार|गिरफ्तार|वारंट|अटक|पार्सल|ड्रग्स|ड्रग्ज/i
+    weight: WEIGHT.STRONG,
+    re: /digital arrest|arrest|warrant|money laundering|drugs? (parcel|found)|parcel .*(drug|illegal)|गिरफ़?्तार|गिरफ्तार|वारंट|अटक|ड्रग्स|ड्रग्ज/i
   },
   {
     id: "isolation",
     weight: WEIGHT.CRITICAL,
-    re: /(don'?t|do not|never) (tell|inform|share with|involve|call) (anyone|family|your (son|daughter|wife|husband)|police)|stay on (the )?(call|line)|video call|(परिवार|किसी).*(मत|ना|न) बता|किसी को (मत|न) बता|कुटुंबाला सांगू नका|कोणाला सांगू नका|वीडियो कॉल|व्हिडिओ कॉल/i
+    re: /(don'?t|do not|never) (tell|inform|share with|involve|call) (anyone|family|your (son|daughter|wife|husband)|police)|stay on (the )?(call|line)|(परिवार|किसी).*(मत|ना|न) बता|किसी को (मत|न) बता|कुटुंबाला सांगू नका|कोणाला सांगू नका/i
   },
   // Credential / money extraction
   {
     id: "otp_request",
     weight: WEIGHT.CRITICAL,
-    re: /\b(otp|pin|cvv|password|passcode|mpin|upi ?pin)\b.{0,40}(share|send|tell|enter|batao|बताओ|बताइए|दें|सांगा|शेअर)|(share|send|tell|batao|बताओ|बताइए|सांगा).{0,40}\b(otp|pin|cvv|password|mpin)\b|ओटीपी (बता|भेज|पाठव)|पिन बता/i,
-    // A bank's own "do not share this OTP" message is not a request for it.
-    unless:
-      /(do not|don'?t|never|कभी|किसी से (भी )?(साझा|शेयर) (न|मत)|कोणाशीही|शेअर करू नका|साझा न करें|share it with anyone)/i
+    re: /\b(otp|pin|cvv|password|passcode|mpin|upi ?pin)\b.{0,40}(share|send|tell|enter|batao|बताओ|बताइए|दें|सांगा|शेअर)|(share|send|tell|batao|बताओ|बताइए|सांगा).{0,40}\b(otp|pin|cvv|password|mpin)\b|ओटीपी (बता|भेज|पाठव)|पिन बता/i
   },
   {
     id: "remote_access",
-    weight: WEIGHT.CRITICAL,
+    weight: WEIGHT.STRONG,
     re: /any ?desk|team ?viewer|quick ?support|screen ?shar(e|ing)|remote access|install (this|the) app|\.apk\b|एनीडेस्क|स्क्रीन शेयर/i
   },
   {
@@ -87,7 +86,19 @@ const RULES: Rule[] = [
 export type RuleResult = { hits: string[]; forced: Extract<Verdict, "RED" | "AMBER"> | null };
 
 export function runRules(text: string): RuleResult {
-  const fired = RULES.filter(({ re, unless }) => re.test(text) && !(unless && unless.test(text)));
+  const normalised = text.normalize("NFKC").replace(/[\u200B-\u200D\uFEFF]/g, "");
+  const withoutCredentialWarnings = normalised
+    .replace(/(?:do not|don't|never)\s+(?:share|send|tell|give)\s+it\s+with\s+anyone/gi, "")
+    .replace(
+      /(?:do not|don't|never)\s+(?:share|send|tell|give)\s+(?:(?:your|this|the)\s+)?(?:otp|pin|cvv|password|passcode)(?:\s+(?:with|to)\s+anyone)?/gi,
+      ""
+    )
+    .replace(/(?:otp|pin|cvv|password)\b\s*[:,—-]?\s*(?:do not|don't|never)\s+share/gi, "")
+    .replace(/(?:ओटीपी|पिन|OTP|PIN)\s*(?:किसी से |कुणालाही )?(?:साझा न करें|शेअर करू नका|शेयर न करें|मत बताइए)/gi, "");
+  const fired = RULES.filter(({ id, re, unless, context }) => {
+    const source = id === "otp_request" ? withoutCredentialWarnings : normalised;
+    return re.test(source) && !(unless && unless.test(source)) && (!context || context.test(source));
+  });
   const score = fired.reduce((sum, { weight }) => sum + weight, 0);
   const hasCritical = fired.some(({ weight }) => weight === WEIGHT.CRITICAL);
   const forced = hasCritical || score >= RULE_THRESHOLDS.RED ? "RED" : score >= RULE_THRESHOLDS.AMBER ? "AMBER" : null;

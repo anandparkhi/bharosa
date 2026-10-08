@@ -3,6 +3,7 @@ import { Back } from "../components/Back";
 import { Mic } from "../components/Mic";
 import { Speak } from "../components/Speak";
 import { checkMessage, type CheckInput, type CheckResult } from "../lib/api";
+import { useTask } from "../lib/useTask";
 import { prepareImage } from "../lib/image";
 import { useSettings } from "../lib/settings";
 import { getContacts, waLink } from "../lib/storage";
@@ -24,9 +25,7 @@ export function Check() {
   const { t, lang } = useSettings();
   const [text, setText] = useState(sharedText);
   const [shot, setShot] = useState<Shot | null>(null);
-  const [busy, setBusy] = useState(false);
-  const [failed, setFailed] = useState(false);
-  const [result, setResult] = useState<CheckResult | null>(null);
+  const { result, busy, failed, run: execute, reset: resetTask } = useTask<CheckResult>(lang);
   const fileRef = useRef<HTMLInputElement>(null);
   const [trusted] = getContacts();
 
@@ -38,26 +37,20 @@ export function Check() {
   );
 
   const run = async () => {
-    setBusy(true);
-    setFailed(false);
-    setResult(null);
-    try {
+    await execute(async (signal) => {
       const input: CheckInput = { text, lang };
       if (shot) {
         const { base64, mediaType } = await prepareImage(shot.file);
         Object.assign(input, { imageBase64: base64, imageType: mediaType });
       }
-      setResult(await checkMessage(input));
-    } catch {
-      setFailed(true);
-    } finally {
-      setBusy(false);
-    }
+      return checkMessage(input, signal);
+    });
   };
   const reset = () => {
-    setResult(null);
+    resetTask();
     setText("");
     setShot(null);
+    if (fileRef.current) fileRef.current.value = "";
   };
   const pickShot = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const file = target.files?.[0];
@@ -73,6 +66,7 @@ export function Check() {
       <Back />
       <h1>{t("checkTitle")}</h1>
       <p className="lead">{t("checkHelp")}</p>
+      <p className="help">{t("checkPrivacy")}</p>
       {result ? (
         <Result result={result} onReset={reset} trustedPhone={trusted?.phone} />
       ) : (
@@ -80,6 +74,8 @@ export function Check() {
           <label htmlFor="msg">{t("checkLabel")}</label>
           <textarea
             id="msg"
+            maxLength={4000}
+            disabled={busy}
             value={text}
             onChange={({ target }) => setText(target.value)}
             placeholder={t("checkPlaceholder")}
@@ -88,7 +84,15 @@ export function Check() {
             <Mic onText={(s) => setText((v) => `${v ? `${v} ` : ""}${s}`)} />
           </div>
           <div className="row" style={{ marginTop: ".5rem" }}>
-            <input ref={fileRef} type="file" accept="image/*" className="sr-only" id="shot" onChange={pickShot} />
+            <input
+              ref={fileRef}
+              type="file"
+              accept="image/png,image/jpeg,image/webp"
+              disabled={busy}
+              className="sr-only"
+              id="shot"
+              onChange={pickShot}
+            />
             {shot ? (
               <button type="button" className="btn quiet" onClick={clearShot}>
                 {t("removeImage")}
@@ -156,8 +160,9 @@ function Result({
       <h2>
         <span aria-hidden="true">{icon}</span> {label}
       </h2>
+      {result.analysisStatus === "limited" && <p role="status">{t("limitedAnalysis")}</p>}
       <Speak text={spoken} autoplay />
-      <h2>{t("noticed")}</h2>
+      {noticed.length > 0 && <h2>{t("noticed")}</h2>}
       {noticed.map((item) => (
         <p key={item} className="evidence">
           {item}
