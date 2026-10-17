@@ -116,7 +116,7 @@ export function parseHistory(raw: string | null): TaskEvent[] {
       (item.device === "android" || item.device === "iphone") &&
       typeof item.at === "number" && Number.isFinite(item.at) &&
       item.at > 0 && item.at <= Date.now() + 86400000
-    ).slice(-MAX_HISTORY);
+    ).slice(-MAX_HISTORY).map((event) => ({ task: event.task, outcome: event.outcome, at: event.at, device: event.device }));
   } catch {
     return [];
   }
