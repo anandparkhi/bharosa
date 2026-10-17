@@ -13,7 +13,7 @@ Statuses restricted to COMPLETE, PARTIAL, BLOCKED, NOT STARTED, UNVERIFIED. Comp
 | Task outcome tracking | PARTIAL | local schema and history UI | independent confirmation absent |
 | Consent manual trusted draft | PARTIAL | UI draft/share consent | external delivery not observable |
 | Retained scam check | PARTIAL | prior API and safety tests | model accuracy not verified |
-| CI regressions | UNVERIFIED | workflow and test files committed | current run status to verify |
+| CI regressions | COMPLETE | [GitHub Actions 121/121, build, lint, prod audit](https://github.com/anandparkhi/bharosa/actions/runs/39018889501) | real-device QA separate; dev dependency advisories |
 | Preview and mobile accessibility | BLOCKED | live website unavailable to current browser | browser device QA |
 | Distributed abuse protection | NOT STARTED | risk in QA report | authentication/rate limiter service |
 | Institution backend and paid pilot | NOT STARTED | commercial roadmap | sponsor/buyer validation |
