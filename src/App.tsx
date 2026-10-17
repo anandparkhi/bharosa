@@ -10,6 +10,7 @@ import { Verify } from "./screens/Verify";
 import { Circle } from "./screens/Circle";
 import { Learn } from "./screens/Learn";
 import { Paid } from "./screens/Paid";
+import { Coach } from "./screens/Coach";
 
 const SCREENS: Record<Route, ComponentType> = {
   [ROUTES.HOME]: Home,
@@ -17,6 +18,7 @@ const SCREENS: Record<Route, ComponentType> = {
   [ROUTES.CHECK]: Check,
   [ROUTES.VERIFY]: Verify,
   [ROUTES.PAID]: Paid,
+  [ROUTES.COACH]: Coach,
   [ROUTES.CIRCLE]: Circle,
   [ROUTES.LEARN]: Learn
 };
