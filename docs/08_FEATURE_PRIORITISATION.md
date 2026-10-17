@@ -4,11 +4,11 @@
 Commercial weights: severity/frequency 20%; user benefit 25%; paid demand 20%; adoption 15%; moat 10%; cost 10%.
 | Feature | S | U | $ | A | D | C | Commercial /100 |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Outcome evidence + tracking | 4 | 5 | 5 | 3 | 4 | 5 | **89** |
+| Outcome evidence + tracking | 4 | 5 | 5 | 3 | 4 | 5 | **88** |
 | Guided task coach | 4 | 5 | 4 | 4 | 3 | 5 | **85** |
 | Consent helper handoff | 5 | 4 | 4 | 4 | 3 | 4 | **82** |
 | Device & language fit | 3 | 4 | 3 | 4 | 3 | 5 | **72** |
-| Scam triage (free gateway) | 5 | 3 | 2 | 3 | 1 | 2 | **60** |
+| Scam triage (free gateway) | 5 | 3 | 2 | 3 | 1 | 2 | **58** |
 
 Engineering weights: simplicity 25%, API/data available 20%, security feasibility 25%, running cost 15%, testability 15%.
 | Feature | Simplicity | Data | Privacy | Cost | Testability | Engineering /100 |
