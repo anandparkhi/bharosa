@@ -7,7 +7,8 @@ export const ROUTES = {
   VERIFY: "/verify",
   PAID: "/paid",
   CIRCLE: "/circle",
-  LEARN: "/learn"
+  LEARN: "/learn",
+  COACH: "/coach"
 } as const;
 export type Route = (typeof ROUTES)[keyof typeof ROUTES];
 
@@ -39,6 +40,7 @@ export const ICONS = {
   PAID: "⏱️",
   CIRCLE: "👨‍👩‍👧",
   LEARN: "📘",
+  COACH: "🧭",
   CALL: "📞",
   WHATSAPP: "💬",
   SHIELD: "🛡️",
@@ -69,6 +71,7 @@ export const VERDICT_META = {
 /** Home screen actions, in priority order. labelKey/subKey resolve via i18n. */
 export const HOME_ACTIONS = [
   { route: ROUTES.EMERGENCY, icon: ICONS.EMERGENCY, labelKey: "emergency", subKey: "emergencySub", kind: "emergency" },
+  { route: ROUTES.COACH, icon: ICONS.COACH, labelKey: "coach", subKey: "coachSub", kind: "primary" },
   { route: ROUTES.CHECK, icon: ICONS.CHECK, labelKey: "check", subKey: "checkSub", kind: "primary" },
   { route: ROUTES.VERIFY, icon: ICONS.VERIFY, labelKey: "verify", subKey: "verifySub" },
   { route: ROUTES.PAID, icon: ICONS.PAID, labelKey: "paid", subKey: "paidSub" },

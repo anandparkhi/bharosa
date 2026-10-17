@@ -45,6 +45,8 @@ const en = {
   circleSub: "Set up who to call and share with",
   learn: "Practice and ask",
   learnSub: "Practice recognising scams and get everyday phone help",
+  coach: "Get something done",
+  coachSub: "Step by step phone task guidance",
   paid: "I already sent money",
   paidSub: "Report it now, even if time has passed",
 
@@ -175,6 +177,8 @@ const hi: Strings = {
   circleSub: "तय करें किसे फ़ोन करना है और किसे बताना है",
   learn: "अभ्यास करें और पूछें",
   learnSub: "धोखे के संकेत पहचानने का अभ्यास और फ़ोन के रोज़मर्रा के कामों में मदद",
+  coach: "फ़ोन का काम पूरा करें",
+  coachSub: "फ़ोन के काम में चरण-दर-चरण मदद",
   paid: "मैंने पैसे भेज दिए हैं",
   paidSub: "समय बीत गया हो तब भी अभी शिकायत करें",
 
@@ -297,6 +301,8 @@ const mr: Strings = {
   circleSub: "कोणाला फोन करायचा आणि कोणाला सांगायचे ते ठरवा",
   learn: "सराव करा आणि विचारा",
   learnSub: "फसवणुकीची लक्षणे ओळखण्याचा सराव व फोनच्या रोजच्या कामांत मदत",
+  coach: "फोनचे काम पूर्ण करा",
+  coachSub: "फोनच्या कामात पायरीपायरीने मदत",
   paid: "मी पैसे पाठवले आहेत",
   paidSub: "वेळ गेला असला तरी आत्ताच तक्रार करा",
 
