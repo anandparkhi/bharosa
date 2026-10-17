@@ -1,16 +1,16 @@
 # 10 — QA, security and verification
-Last refreshed: 17 Oct 2026. **Independent test execution status: UNVERIFIED until CI and device evidence is obtained.**
-- Current local container cannot clone from GitHub (DNS error), so `npm ci`, `npm run check`, real Vercel preview browsing and Anthropic evaluation could not be run there.
+Last refreshed: 17 Oct 2026. **Independent test execution status: COMPLETE for current GitHub Actions CI; UNVERIFIED for real-device, deployment equivalence and model-accuracy checks.**
+- Local container cannot clone from GitHub (DNS error). However GitHub Actions successfully ran `npm ci`, `npm run check` and `npm audit --omit=dev --audit-level=high` on the branch head; see [successful check](https://github.com/anandparkhi/bharosa/actions/runs/39018889501).
 - Historical Oct 8 audit reports 115 passing tests on the earlier patch; this is *not* a result for this branch.
-- A GitHub Actions workflow was committed to execute `npm ci`, `npm run check`, and `npm audit --omit=dev --audit-level=high`. Check PR #2 for actual results. Passing CI will not prove real-device or production correctness.
+- GitHub Actions result: 121/121 Node tests pass; ESLint, TypeScript and Vite production build pass; production dependency audit reports zero vulnerabilities. `npm ci` reports 19 vulnerabilities when *development* dependencies are included (1 low, 3 moderate, 14 high, 1 critical). Full dependency tree needs remediation and dedicated CI policy. Passing CI still does not prove real-device or production correctness.
 
 ## Traceability and gates
 | Requirement | Evidence path | Status |
 |---|---|---|
-| Six device+language flows | `src/lib/coach.ts`; `tests/coach.test.mjs` | UNVERIFIED (test committed, check run pending) |
-| Unknown task rejection | `getGuide`, `isTaskId`, regression test | UNVERIFIED |
-| Local history bounded and sanitized | `parseHistory`, `addOutcome`, tests | UNVERIFIED |
-| Manual contact with explicit opt-in | `src/screens/Coach.tsx`; browser manual review required | UNVERIFIED |
+| Six device+language flows | `src/lib/coach.ts`; `tests/coach.test.mjs`; CI 121/121 | COMPLETE (automated checks only) |
+| Unknown task rejection | `getGuide`, `isTaskId`, regression test | COMPLETE (automated checks only) |
+| Local history bounded and sanitized | `parseHistory`, `addOutcome`, tests | COMPLETE (automated checks only) |
+| Manual contact with explicit opt-in | `src/screens/Coach.tsx`; browser manual review required | UNVERIFIED (E2E) |
 | Delete local history | Coach erase control; manual blocked-storage test required | UNVERIFIED |
 | Existing screenshot scam analysis | `server/check.ts`; historical suite | UNVERIFIED current model accuracy |
 | iOS/Android assistive technologies | no device lab performed | BLOCKED |
