@@ -13,6 +13,7 @@ export type Guide = {
 export const HISTORY_KEY = "bharosa.coach.outcomes.v1";
 export const DEVICE_KEY = "bharosa.coach.device.v1";
 const MAX_HISTORY = 100;
+const CLOCK_SKEW_MS = 24 * 60 * 60 * 1000;
 const taskIds: TaskId[] = ["font", "block", "update", "linked", "screenshot", "balance"];
 const outcomes: Outcome[] = ["completed", "unresolved", "help_requested"];
 
@@ -115,7 +116,7 @@ export function parseHistory(raw: string | null): TaskEvent[] {
       isTaskId(item.task) && outcomes.includes(item.outcome) &&
       (item.device === "android" || item.device === "iphone") &&
       typeof item.at === "number" && Number.isFinite(item.at) &&
-      item.at > 0 && item.at <= Date.now() + 86400000
+      item.at > 0 && item.at <= Date.now() + CLOCK_SKEW_MS
     ).slice(-MAX_HISTORY).map((event) => ({ task: event.task, outcome: event.outcome, at: event.at, device: event.device }));
   } catch {
     return [];
