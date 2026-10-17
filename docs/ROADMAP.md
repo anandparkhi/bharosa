@@ -1,0 +1,2 @@
+# Roadmap
+0–30d: verify CI, close security findings, local-language/device usability study, 60 observed tasks. 31–60d: 100 user cohort and ≥10 sponsor buyer interviews, make guide version/expiry governance. 61–90d: if outcomes improve baseline by ≥20pp, prepare consented pilot/aggregated instrumentation design; seek 2 pilot LOIs. 91–180d: 2 paid pilots and ≥1,000 real engaged users as **targets**, measure institutional support deflection, contract economics, independent privacy audit and seed go/no-go. Do not develop automated money movement.
