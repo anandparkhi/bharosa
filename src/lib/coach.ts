@@ -13,7 +13,7 @@ export type Guide = {
 export const HISTORY_KEY = "bharosa.coach.outcomes.v1";
 export const DEVICE_KEY = "bharosa.coach.device.v1";
 const MAX_HISTORY = 100;
-const CLOCK_SKEW_MS = 24 * 60 * 60 * 1000;
+const CLOCK_SKEW_MS = Date.parse("1970-01-02T00:00:00Z") - Date.parse("1970-01-01T00:00:00Z");
 const taskIds: TaskId[] = ["font", "block", "update", "linked", "screenshot", "balance"];
 const outcomes: Outcome[] = ["completed", "unresolved", "help_requested"];
 
