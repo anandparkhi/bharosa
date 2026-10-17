@@ -1,0 +1,2 @@
+# Verification report
+**Committed source confirmed in GitHub.** Historical baseline PR #1 merged to main at `9de5d5f...`. Feature branch and draft PR #2 exist. Author verified Anand Parkhi matching previous commit. **UNVERIFIED:** current `npm ci`, type/build/lint/regression success, E2E, device accessibility, provider accuracy, production equivalence, commercial traction. Local clone blocked by DNS. GitHub Actions `Verify Bharosa transformation` is the independent check source; use its actual result rather than assuming it passed. No merge/production release.
