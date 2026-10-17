@@ -1,5 +1,5 @@
 # 09 — Outcome-first prototype PRD
-Version 0.2 candidate, 17 Oct 2026. Source code is on `feat/outcome-first-transformation-20261017`; functional acceptance **UNVERIFIED** until CI/device tests.
+Version 0.2 candidate, 17 Oct 2026. Source code is on `feat/outcome-first-transformation-20261017`; CI acceptance **COMPLETE** (121 tests, lint, type/build); device/E2E acceptance **UNVERIFIED**.
 
 ## User story and jobs-to-be-done
 When I encounter a common digital task that feels unfamiliar, I want a safe, understandable next step and an honest way to mark whether I finished, so I can remain independent without exposing credentials.
@@ -23,7 +23,7 @@ D. Untrusted local-storage object keys cannot leak into persisted typed outcomes
 E. The share text contains only reviewed task names and never raw user input.
 F. Without consent or selected contact there is no WhatsApp handoff link.
 G. User can delete stored task history.
-H. CI must pass lint, type check, regression tests, production build and dependency audit. Browser screen readers/mobile/speech must be tested separately.
+H. CI passed lint, type check, 121 regression tests, production build and production-only dependency audit on 2026-10-17. Browser screen readers/mobile/speech must be tested separately; development dependency advisories remain.
 
 ## Error and fallback
 Storage failure → visible error and no false claim of recording. Unavailable speech → text remains available; actual device test pending. Offline → guides remain locally renderable once page loads; PWA offline install behavior unverified. No auto-disbursement, password entry, OTP collection or unattended browser automation.
