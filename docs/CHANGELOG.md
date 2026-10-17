@@ -1,0 +1,2 @@
+# Changelog
+2026-10-17 branch `feat/outcome-first-transformation-20261017`: introduced `src/lib/coach.ts`, `src/screens/Coach.tsx`; linked route and localized home entry; bounded outcome history, delete, reviewed cross-device guide sets, explicit consent preview and manual WhatsApp sharing; new `tests/coach.test.mjs`, CI workflow and strategy documentation. Existing scam check, emergency screen and contact directory retained. No existing stored user data migrated. **No production merge/deploy.**
