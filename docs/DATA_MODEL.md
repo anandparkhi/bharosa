@@ -1,0 +1,2 @@
+# Data model
+`bharosa.coach.device.v1`: `"android"|"iphone"`. `bharosa.coach.outcomes.v1`: array of up to 100 `{task, outcome, at, device}` validated/sanitized during read; task enum font/block/update/linked/screenshot/balance, outcome enum completed/unresolved/help_requested (last means **draft initiated**, not delivery). No account IDs or screenshots in new outcome schema. Existing trusted contacts remain in localStorage with schema from `src/lib/storage.ts`. No server database or secure cross-device persistence.

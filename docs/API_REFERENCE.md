@@ -1,0 +1,3 @@
+# API Reference
+**Existing:** `POST /api/ai` with `mode=ask|check`, `lang=en|hi|mr`, `text`; `check` may attach validated JPEG/PNG/WebP image base64 and its declared MIME type. `ask` returns `{answer,supported,topic}` deterministic curated advice. `check` returns `{verdict,noticed,why,now,ruleHits,analysisStatus}`. Errors include HTTP 400 invalid input, 403 invalid origin, 405 wrong method, 429 best-effort rate limit, 503 unavailable. See actual `server/validation.ts`.
+**New task coach:** no network/API endpoint; static `getGuide(TaskId,lang,device)`; pure helpers `parseHistory`, `addOutcome`, `outcomeStats`; history in localStorage. No cloud analytics, account creation, payment, institutional entitlement or authenticated helper APIs.
